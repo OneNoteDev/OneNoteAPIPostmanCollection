@@ -18,7 +18,7 @@
 								"header": [
 									{
 										"key": "{{AppIdHeader}}",
-										"value": "Testing",
+										"value": "{{AppIdHeader_Value}}",
 										"type": "text"
 									},
 									{
@@ -30,7 +30,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\"webUrls\":[\"https://one-my.spoppe.com/personal/amit_one_ccsctp_net/_layouts/15/WopiFrame.aspx?sourcedoc={62073058-629a-4855-b261-cd25d1594788}\"]}"
+									"raw": "{\"webUrls\":[{{WebUrls}}]}"
 								},
 								"url": {
 									"raw": "{{MeNotebooks}}/GetNotebooksFromWebUrls",
@@ -52,7 +52,7 @@
 								"header": [
 									{
 										"key": "{{AppIdHeader}}",
-										"value": "Testing",
+										"value": "{{AppIdHeader_Value}}",
 										"type": "text"
 									},
 									{
@@ -64,7 +64,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\"webUrl\":\"onenote:https://oconnectedservices-my.sharepoint.com/personal/csstar9_oconnectedservices_onmicrosoft_com/Documents/Notebooks/TeamsNotebook(Shared)\"}"
+									"raw": "{\"webUrl\":{{WebUrl}}}"
 								},
 								"url": {
 									"raw": "{{MeNotebooks}}/GetNotebookFromWebUrl",
@@ -93,7 +93,7 @@
 								"header": [
 									{
 										"key": "{{AppIdHeader}}",
-										"value": "Testing",
+										"value": "{{AppIdHeader_Value}}",
 										"type": "text"
 									}
 								],
@@ -121,7 +121,7 @@
 								"header": [
 									{
 										"key": "{{AppIdHeader}}",
-										"value": "Testing",
+										"value": "{{AppIdHeader_Value}}",
 										"type": "text"
 									}
 								],
@@ -145,7 +145,7 @@
 								"header": [
 									{
 										"key": "{{AppIdHeader}}",
-										"value": "Testing",
+										"value": "{{AppIdHeader_Value}}",
 										"type": "text"
 									}
 								],
@@ -169,7 +169,7 @@
 								"header": [
 									{
 										"key": "{{AppIdHeader}}",
-										"value": "Testing",
+										"value": "{{AppIdHeader_Value}}",
 										"type": "text"
 									}
 								],
@@ -204,13 +204,13 @@
 					"name": "PATCH",
 					"item": [
 						{
-							"name": "Insert-new-Empty-old",
+							"name": "Insert-new-Replace-old",
 							"request": {
 								"method": "PATCH",
 								"header": [
 									{
 										"key": "{{AppIdHeader}}",
-										"value": "Testing",
+										"value": "{{AppIdHeader_Value}}",
 										"type": "text"
 									},
 									{
@@ -222,7 +222,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "[\r\n  {\r\n    \"action\": \"insert\",\r\n    \"position\": \"before\",\r\n    \"target\": \"p:{8aae008c-215b-4f52-9f48-bf78e3fce1be}{43}\",\r\n    \"content\": \"<p data-tag=\\\"to-do:completed\\\" style=\\\"margin-top:0pt;margin-bottom:0pt\\\">Super task</p>\"\r\n  }, {\r\n    \"action\": \"replace\",\r\n    \"target\": \"p:{8aae008c-215b-4f52-9f48-bf78e3fce1be}{43}\",\r\n    \"content\": \"\"\r\n  }\r\n]"
+									"raw": "[\r\n  {\r\n    \"action\": \"insert\",\r\n    \"position\": \"before\",\r\n    \"target\": \"{{Replace_TargetId}}\",\r\n    \"content\": \"<p data-tag=\\\"to-do:completed\\\" style=\\\"margin-top:0pt;margin-bottom:0pt\\\">Super task</p>\"\r\n  }, {\r\n    \"action\": \"replace\",\r\n    \"target\": \"{{Replace_TargetId}}\",\r\n    \"content\": \"\"\r\n  }\r\n]"
 								},
 								"url": {
 									"raw": "{{MePages}}/{{PageId}}/content",
@@ -246,7 +246,7 @@
 									{
 										"key": "{{AppIdHeader}}",
 										"type": "text",
-										"value": "Testing"
+										"value": "{{AppIdHeader_Value}}"
 									},
 									{
 										"key": "Content-Type",
@@ -257,7 +257,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "[\r\n  {\r\n    \"action\": \"replace\",\r\n    \"target\": \"p:{ded17022-ade5-47d0-9b63-6c0f97096407}{172}\",\r\n    \"content\":\"<p data-tag=\\\"to-do:completed\\\" style=\\\"margin-top:0pt;margin-bottom:0pt\\\">Super task</p>\"\r\n  }\r\n]"
+									"raw": "[\r\n  {\r\n    \"action\": \"replace\",\r\n    \"target\": \"{{Replace_TargetId}}\",\r\n    \"content\":\"<p data-tag=\\\"to-do:completed\\\" style=\\\"margin-top:0pt;margin-bottom:0pt\\\">Super task</p>\"\r\n  }\r\n]"
 								},
 								"url": {
 									"raw": "{{MePages}}/{{PageId}}/content",
@@ -283,47 +283,54 @@
 			"name": "Wopi",
 			"item": [
 				{
-					"name": "go",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
+					"name": "GET",
+					"item": [
+						{
+							"name": "go",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{WopiHost}}/go",
+									"host": [
+										"{{WopiHost}}"
+									],
+									"path": [
+										"go"
+									]
+								}
+							},
+							"response": []
 						},
-						"url": {
-							"raw": "{{WopiHost}}/go",
-							"host": [
-								"{{WopiHost}}"
-							],
-							"path": [
-								"go"
-							]
+						{
+							"name": "go/newpage",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{WopiHost}}/go/newpage",
+									"host": [
+										"{{WopiHost}}"
+									],
+									"path": [
+										"go",
+										"newpage"
+									]
+								}
+							},
+							"response": []
 						}
-					},
-					"response": []
-				},
-				{
-					"name": "go/newpage",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{WopiHost}}/go/newpage",
-							"host": [
-								"{{WopiHost}}"
-							],
-							"path": [
-								"go",
-								"newpage"
-							]
-						}
-					},
-					"response": []
+					],
+					"description": "All the WOPI GET Requests.",
+					"_postman_isSubFolder": true
 				}
 			],
 			"description": "Wopi endpoints."
@@ -334,7 +341,7 @@
 		"bearer": [
 			{
 				"key": "token",
-				"value": "",
+				"value": "{{AuthToken}}",
 				"type": "string"
 			}
 		]
@@ -363,44 +370,68 @@
 	],
 	"variable": [
 		{
-			"id": "8aa3026f-405e-477e-8e1a-a33eac3d7831",
+			"id": "7c2343fd-d006-4eb1-b913-42a523e25918",
 			"key": "AppIdHeader",
 			"value": "MS-Int-AppId",
 			"type": "string"
 		},
 		{
-			"id": "af2e604f-b6d5-44a9-bad8-54ba5de0e0a7",
+			"id": "9dac6d04-8be5-4f61-a5a7-056ba6a730fd",
+			"key": "AppIdHeader_Value",
+			"value": "Testing",
+			"type": "string"
+		},
+		{
+			"id": "01d6276e-90bc-437c-9085-1292f1dfb5b0",
 			"key": "Me",
 			"value": "{{Site}}/api/{{version}}/me",
 			"type": "string"
 		},
 		{
-			"id": "73e0d52c-b52e-4fb2-882e-8e9e98a8645e",
+			"id": "06a1148b-7b8f-4333-8c9c-6b31c406b78e",
 			"key": "MeNotebooks",
 			"value": "{{Me}}/notes/notebooks",
 			"type": "string"
 		},
 		{
-			"id": "058763e6-50e1-482f-8289-49d0e87bf754",
-			"key": "MachineName",
-			"value": "",
-			"type": "string"
-		},
-		{
-			"id": "88d198cb-7d94-48ce-90f0-8da08118dea4",
+			"id": "753558a1-7b10-46f4-813f-2fedd55827df",
 			"key": "WopiHost",
 			"value": "{{Site}}/host",
 			"type": "string"
 		},
 		{
-			"id": "51d4e538-83ee-4f2d-9a2b-9fcbfaa8a031",
+			"id": "21bce7bb-a66b-4c5e-8c43-9809ccadc7a0",
 			"key": "MePages",
 			"value": "{{Me}}/notes/pages",
 			"type": "string"
 		},
 		{
-			"id": "a676be03-bc41-4291-b6d9-0e543a7289f1",
+			"id": "1f3b59cf-e276-4644-9f43-af923e124964",
 			"key": "PageId",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"id": "817d88f8-14c4-4d18-8ca1-fdc1fb1555c7",
+			"key": "MachineName",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"id": "e8a955f3-e8dc-4a8e-84c3-ea840800fbc2",
+			"key": "WebUrl",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"id": "b8a349fc-1e61-467f-bf50-679f349204b7",
+			"key": "WebUrls",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"id": "357fb504-74e5-4d23-8302-d73ef034c76a",
+			"key": "Replace_TargetId",
 			"value": "",
 			"type": "string"
 		}
