@@ -1,0 +1,408 @@
+{
+	"info": {
+		"_postman_id": "d47a140e-a7cb-49f9-9fdf-d434509b8abf",
+		"name": "OneNote API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Notebooks",
+			"item": [
+				{
+					"name": "POST",
+					"item": [
+						{
+							"name": "GetNotebooksFromWebUrls",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "{{AppIdHeader}}",
+										"value": "Testing",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"webUrls\":[\"https://one-my.spoppe.com/personal/amit_one_ccsctp_net/_layouts/15/WopiFrame.aspx?sourcedoc={62073058-629a-4855-b261-cd25d1594788}\"]}"
+								},
+								"url": {
+									"raw": "{{MeNotebooks}}/GetNotebooksFromWebUrls",
+									"host": [
+										"{{MeNotebooks}}"
+									],
+									"path": [
+										"GetNotebooksFromWebUrls"
+									]
+								},
+								"description": "Gets the notebooks for a list of onenote weburls"
+							},
+							"response": []
+						},
+						{
+							"name": "GetNotebookFromWebUrl",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "{{AppIdHeader}}",
+										"value": "Testing",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"webUrl\":\"onenote:https://oconnectedservices-my.sharepoint.com/personal/csstar9_oconnectedservices_onmicrosoft_com/Documents/Notebooks/TeamsNotebook(Shared)\"}"
+								},
+								"url": {
+									"raw": "{{MeNotebooks}}/GetNotebookFromWebUrl",
+									"host": [
+										"{{MeNotebooks}}"
+									],
+									"path": [
+										"GetNotebookFromWebUrl"
+									]
+								},
+								"description": "Gets the notebooks for a list of onenote weburls"
+							},
+							"response": []
+						}
+					],
+					"description": "All available POST actions in Notebooks API",
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "GET",
+					"item": [
+						{
+							"name": "GetRecentNotebooks(IncludePersonalNotebooks)",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "{{AppIdHeader}}",
+										"value": "Testing",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{MeNotebooks}}/GetRecentNotebooks(includePersonalNotebooks=true)",
+									"host": [
+										"{{MeNotebooks}}"
+									],
+									"path": [
+										"GetRecentNotebooks(includePersonalNotebooks=true)"
+									]
+								},
+								"description": "Gets all the recent notebooks of a user including personal notebooks."
+							},
+							"response": []
+						},
+						{
+							"name": "Get Me Notebook",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "{{AppIdHeader}}",
+										"value": "Testing",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{MeNotebooks}}",
+									"host": [
+										"{{MeNotebooks}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Me Pages",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "{{AppIdHeader}}",
+										"value": "Testing",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{MePages}}",
+									"host": [
+										"{{MePages}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Page Content",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "{{AppIdHeader}}",
+										"value": "Testing",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{MePages}}/{{PageId}}/content?includeIds=true",
+									"host": [
+										"{{MePages}}"
+									],
+									"path": [
+										"{{PageId}}",
+										"content"
+									],
+									"query": [
+										{
+											"key": "includeIds",
+											"value": "true"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "All notebooks GET functions",
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "PATCH",
+					"item": [
+						{
+							"name": "Insert-new-Empty-old",
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "{{AppIdHeader}}",
+										"value": "Testing",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "[\r\n  {\r\n    \"action\": \"insert\",\r\n    \"position\": \"before\",\r\n    \"target\": \"p:{8aae008c-215b-4f52-9f48-bf78e3fce1be}{43}\",\r\n    \"content\": \"<p data-tag=\\\"to-do:completed\\\" style=\\\"margin-top:0pt;margin-bottom:0pt\\\">Super task</p>\"\r\n  }, {\r\n    \"action\": \"replace\",\r\n    \"target\": \"p:{8aae008c-215b-4f52-9f48-bf78e3fce1be}{43}\",\r\n    \"content\": \"\"\r\n  }\r\n]"
+								},
+								"url": {
+									"raw": "{{MePages}}/{{PageId}}/content",
+									"host": [
+										"{{MePages}}"
+									],
+									"path": [
+										"{{PageId}}",
+										"content"
+									]
+								},
+								"description": "This requests inserts a new todo item and replaces the old item with an empty block. It tries to work around a known bug where the list would break if user updates the todo item by itself."
+							},
+							"response": []
+						},
+						{
+							"name": "Update Todo Item",
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "{{AppIdHeader}}",
+										"type": "text",
+										"value": "Testing"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "[\r\n  {\r\n    \"action\": \"replace\",\r\n    \"target\": \"p:{ded17022-ade5-47d0-9b63-6c0f97096407}{172}\",\r\n    \"content\":\"<p data-tag=\\\"to-do:completed\\\" style=\\\"margin-top:0pt;margin-bottom:0pt\\\">Super task</p>\"\r\n  }\r\n]"
+								},
+								"url": {
+									"raw": "{{MePages}}/{{PageId}}/content",
+									"host": [
+										"{{MePages}}"
+									],
+									"path": [
+										"{{PageId}}",
+										"content"
+									]
+								},
+								"description": "This requests inserts a new todo item and replaces the old item with an empty block. It tries to work around a known bug where the list would break if user updates the todo item by itself."
+							},
+							"response": []
+						}
+					],
+					"description": "All available notebooks patch requests",
+					"_postman_isSubFolder": true
+				}
+			]
+		},
+		{
+			"name": "Wopi",
+			"item": [
+				{
+					"name": "go",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{WopiHost}}/go",
+							"host": [
+								"{{WopiHost}}"
+							],
+							"path": [
+								"go"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "go/newpage",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{WopiHost}}/go/newpage",
+							"host": [
+								"{{WopiHost}}"
+							],
+							"path": [
+								"go",
+								"newpage"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Wopi endpoints."
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "4fcc87ca-73a0-4014-93cd-88c9089ecd59",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "e1141f29-244d-41b0-b308-74478dc4f2c0",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "8aa3026f-405e-477e-8e1a-a33eac3d7831",
+			"key": "AppIdHeader",
+			"value": "MS-Int-AppId",
+			"type": "string"
+		},
+		{
+			"id": "af2e604f-b6d5-44a9-bad8-54ba5de0e0a7",
+			"key": "Me",
+			"value": "{{Site}}/api/{{version}}/me",
+			"type": "string"
+		},
+		{
+			"id": "73e0d52c-b52e-4fb2-882e-8e9e98a8645e",
+			"key": "MeNotebooks",
+			"value": "{{Me}}/notes/notebooks",
+			"type": "string"
+		},
+		{
+			"id": "058763e6-50e1-482f-8289-49d0e87bf754",
+			"key": "MachineName",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"id": "88d198cb-7d94-48ce-90f0-8da08118dea4",
+			"key": "WopiHost",
+			"value": "{{Site}}/host",
+			"type": "string"
+		},
+		{
+			"id": "51d4e538-83ee-4f2d-9a2b-9fcbfaa8a031",
+			"key": "MePages",
+			"value": "{{Me}}/notes/pages",
+			"type": "string"
+		},
+		{
+			"id": "a676be03-bc41-4291-b6d9-0e543a7289f1",
+			"key": "PageId",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
