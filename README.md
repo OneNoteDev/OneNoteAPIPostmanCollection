@@ -25,15 +25,28 @@
 
 ![Manage_Environments-Import](/img/Collection-Variables.gif)
 
-    b.- Go back into the "Manage Environments" menu and click on the "Globals" button. Here you will see the two different types of AuthTokens used to contact Production or PPE environments. 
-        Add the necessary auth tokens to these variables (CURRENT VALUE ONLY) and hit save. 
-        
+    b.- Go back into the "Manage Environments" menu and click on the "Globals" button. Here you will see the two different types of AuthTokens used to contact Production or PPE environments.
 ![Manage_Environments-Import](/img/Manage_Environments-Globals.gif)
 
-        The AuthTokens will expire after a while so you will have to come back and update their values every time
-        that happens.
+You can use the ticketizer tool to create the AuthTokens: http://toolbox/ticketizer
+Open the tool, go to the ADAL tab and hit the "Ticket Please!!" button to the right:
+![Manage_Environments-Import](/img/CreateAuthToken.gif)
+
+This will generate a token for the production environment token. Copy the token from there and paste it in the "Prod_AuthToken" variable current value.
+You can also generate a token for the "PPE_AuthToken" variable by clicking in the "INT/PPE" radio button in ticketizer before generating the token.
+![Manage_Environments-Import](/img/CreateAuthToken_PPE.gif)
+
+Add the necessary auth tokens to these variables (CURRENT VALUE ONLY) and hit save. 
+
+The AuthTokens will expire after a while so you will have to come back and update their values every time
+that happens.
 
 Now you should be able to open any of the requests and hit the Send button to execute.
+
+# Configuring SSL
+
+Your local devfabric deployment won't be reachable if we don't disable the use of "SSL certificate verification". To do this go to File > Settings > General and turn off the "SSL certificate verification".
+![Manage_Environments-Import](/img/DisableSSL.gif)
 
 # Contributing
 

@@ -6,7 +6,7 @@
 	},
 	"item": [
 		{
-			"name": "Notebooks",
+			"name": "NOTEBOOKS",
 			"item": [
 				{
 					"name": "POST",
@@ -64,7 +64,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\"webUrl\":{{WebUrl}}}"
+									"raw": "{\"webUrl\":\"{{WebUrl}}\"}"
 								},
 								"url": {
 									"raw": "{{MeNotebooks}}/GetNotebookFromWebUrl",
@@ -115,7 +115,7 @@
 							"response": []
 						},
 						{
-							"name": "Get Me Notebook",
+							"name": "Get All Notebooks at Me",
 							"request": {
 								"method": "GET",
 								"header": [
@@ -139,7 +139,7 @@
 							"response": []
 						},
 						{
-							"name": "Get Me Pages",
+							"name": "GetClassNotebooks",
 							"request": {
 								"method": "GET",
 								"header": [
@@ -154,133 +154,23 @@
 									"raw": ""
 								},
 								"url": {
-									"raw": "{{MePages}}",
+									"raw": "{{MeClassNotebooks}}",
 									"host": [
-										"{{MePages}}"
+										"{{MeClassNotebooks}}"
 									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Get Page Content",
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "{{AppIdHeader}}",
-										"value": "{{AppIdHeader_Value}}",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
 								},
-								"url": {
-									"raw": "{{MePages}}/{{PageId}}/content?includeIds=true",
-									"host": [
-										"{{MePages}}"
-									],
-									"path": [
-										"{{PageId}}",
-										"content"
-									],
-									"query": [
-										{
-											"key": "includeIds",
-											"value": "true"
-										}
-									]
-								}
+								"description": "Gets all notebooks from classnotebooks"
 							},
 							"response": []
 						}
 					],
 					"description": "All notebooks GET functions",
 					"_postman_isSubFolder": true
-				},
-				{
-					"name": "PATCH",
-					"item": [
-						{
-							"name": "Insert-new-Replace-old",
-							"request": {
-								"method": "PATCH",
-								"header": [
-									{
-										"key": "{{AppIdHeader}}",
-										"value": "{{AppIdHeader_Value}}",
-										"type": "text"
-									},
-									{
-										"key": "Content-Type",
-										"name": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "[\r\n  {\r\n    \"action\": \"insert\",\r\n    \"position\": \"before\",\r\n    \"target\": \"{{Replace_TargetId}}\",\r\n    \"content\": \"<p data-tag=\\\"to-do:completed\\\" style=\\\"margin-top:0pt;margin-bottom:0pt\\\">Super task</p>\"\r\n  }, {\r\n    \"action\": \"replace\",\r\n    \"target\": \"{{Replace_TargetId}}\",\r\n    \"content\": \"\"\r\n  }\r\n]"
-								},
-								"url": {
-									"raw": "{{MePages}}/{{PageId}}/content",
-									"host": [
-										"{{MePages}}"
-									],
-									"path": [
-										"{{PageId}}",
-										"content"
-									]
-								},
-								"description": "This requests inserts a new todo item and replaces the old item with an empty block. It tries to work around a known bug where the list would break if user updates the todo item by itself."
-							},
-							"response": []
-						},
-						{
-							"name": "Update Todo Item",
-							"request": {
-								"method": "PATCH",
-								"header": [
-									{
-										"key": "{{AppIdHeader}}",
-										"type": "text",
-										"value": "{{AppIdHeader_Value}}"
-									},
-									{
-										"key": "Content-Type",
-										"name": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "[\r\n  {\r\n    \"action\": \"replace\",\r\n    \"target\": \"{{Replace_TargetId}}\",\r\n    \"content\":\"<p data-tag=\\\"to-do:completed\\\" style=\\\"margin-top:0pt;margin-bottom:0pt\\\">Super task</p>\"\r\n  }\r\n]"
-								},
-								"url": {
-									"raw": "{{MePages}}/{{PageId}}/content",
-									"host": [
-										"{{MePages}}"
-									],
-									"path": [
-										"{{PageId}}",
-										"content"
-									]
-								},
-								"description": "This requests inserts a new todo item and replaces the old item with an empty block. It tries to work around a known bug where the list would break if user updates the todo item by itself."
-							},
-							"response": []
-						}
-					],
-					"description": "All available notebooks patch requests",
-					"_postman_isSubFolder": true
 				}
 			]
 		},
 		{
-			"name": "Wopi",
+			"name": "WOPI",
 			"item": [
 				{
 					"name": "GET",
@@ -327,6 +217,28 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "ping  host",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{WOPIEndpoint}}/ping",
+									"host": [
+										"{{WOPIEndpoint}}"
+									],
+									"path": [
+										"ping"
+									]
+								},
+								"description": "Pings the WOPI host endpoint."
+							},
+							"response": []
 						}
 					],
 					"description": "All the WOPI GET Requests.",
@@ -334,6 +246,353 @@
 				}
 			],
 			"description": "Wopi endpoints."
+		},
+		{
+			"name": "RESOURCES",
+			"item": [
+				{
+					"name": "GET",
+					"item": [
+						{
+							"name": "Get Resource Value By Id",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "{{AppIdHeader}}",
+										"value": "{{AppIdHeader_Value}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{MeResources}}/{{ResourceId}}/$value",
+									"host": [
+										"{{MeResources}}"
+									],
+									"path": [
+										"{{ResourceId}}",
+										"$value"
+									]
+								},
+								"description": "Gets a resource by using the provided ID"
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				}
+			]
+		},
+		{
+			"name": "SECTIONGROUPS",
+			"item": [
+				{
+					"name": "GET",
+					"item": [
+						{
+							"name": "Get All SectionGroups at Me",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "{{AppIdHeader}}",
+										"type": "text",
+										"value": "{{AppIdHeader_Value}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{MeSectionGroups}}",
+									"host": [
+										"{{MeSectionGroups}}"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				}
+			],
+			"description": "All GET requests for section groups"
+		},
+		{
+			"name": "PAGES",
+			"item": [
+				{
+					"name": "GET",
+					"item": [
+						{
+							"name": "Get All Pages at Me",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "{{AppIdHeader}}",
+										"value": "{{AppIdHeader_Value}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{MePages}}",
+									"host": [
+										"{{MePages}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Page Content at Me",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "{{AppIdHeader}}",
+										"value": "{{AppIdHeader_Value}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{MePages}}/{{PageId}}/content?includeIds=true",
+									"host": [
+										"{{MePages}}"
+									],
+									"path": [
+										"{{PageId}}",
+										"content"
+									],
+									"query": [
+										{
+											"key": "includeIds",
+											"value": "true"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "PATCH",
+					"item": [
+						{
+							"name": "Insert Before Target",
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "{{AppIdHeader}}",
+										"value": "{{AppIdHeader_Value}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "[\r\n  {\r\n    \"action\": \"insert\",\r\n    \"position\": \"before\",\r\n    \"target\": \"{{Target_Id}}\",\r\n    \"content\": \"{{HTMLContent}}\"\r\n  }\r\n]"
+								},
+								"url": {
+									"raw": "{{MePages}}/{{PageId}}/content",
+									"host": [
+										"{{MePages}}"
+									],
+									"path": [
+										"{{PageId}}",
+										"content"
+									]
+								},
+								"description": "This requests inserts a new todo item and replaces the old item with an empty block. It tries to work around a known bug where the list would break if user updates the todo item by itself."
+							},
+							"response": []
+						},
+						{
+							"name": "Replace Target",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "26267e5b-be2d-47e4-bd45-172604fa1b4a",
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "{{AppIdHeader}}",
+										"type": "text",
+										"value": "{{AppIdHeader_Value}}"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "[\r\n  {\r\n    \"action\": \"replace\",\r\n    \"target\": \"{{Target_Id}}\",\r\n    \"content\":\"{{HTMLContent}}\"\r\n  }\r\n]"
+								},
+								"url": {
+									"raw": "{{MePages}}/{{PageId}}/content",
+									"host": [
+										"{{MePages}}"
+									],
+									"path": [
+										"{{PageId}}",
+										"content"
+									]
+								},
+								"description": "This requests inserts a new todo item and replaces the old item with an empty block. It tries to work around a known bug where the list would break if user updates the todo item by itself."
+							},
+							"response": []
+						}
+					],
+					"description": "All available notebooks patch requests",
+					"_postman_isSubFolder": true
+				}
+			],
+			"description": "All Get requests for Pages."
+		},
+		{
+			"name": "SECTIONS",
+			"item": [
+				{
+					"name": "GET",
+					"item": [
+						{
+							"name": "Get All Sections at Me",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "{{AppIdHeader}}",
+										"type": "text",
+										"value": "{{AppIdHeader_Value}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{MeSections}}",
+									"host": [
+										"{{MeSections}}"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "POST",
+					"item": [
+						{
+							"name": "Create a Section in Notebook",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "{{AppIdHeader}}",
+										"value": "{{AppIdHeader_Value}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"name\":\"{{Test_Title}}\"}"
+								},
+								"url": {
+									"raw": "{{MeNotebooks}}/{{NotebookId}}/sections",
+									"host": [
+										"{{MeNotebooks}}"
+									],
+									"path": [
+										"{{NotebookId}}",
+										"sections"
+									]
+								},
+								"description": "Creates a new section under the provided notebook id."
+							},
+							"response": []
+						},
+						{
+							"name": "Create a Section in SectionGroup",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "{{AppIdHeader}}",
+										"value": "{{AppIdHeader_Value}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"name\":\"{{Test_Title-Japanese}}\"}"
+								},
+								"url": {
+									"raw": "{{MeNotebooks}}/{{SectionGroupId}}/sections",
+									"host": [
+										"{{MeNotebooks}}"
+									],
+									"path": [
+										"{{SectionGroupId}}",
+										"sections"
+									]
+								},
+								"description": "Creates a new section under the provided notebook id."
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				}
+			],
+			"description": "All Get Requests for Sections"
 		}
 	],
 	"auth": {
@@ -370,68 +629,146 @@
 	],
 	"variable": [
 		{
-			"id": "7c2343fd-d006-4eb1-b913-42a523e25918",
+			"id": "e7ef96bb-6c34-42a6-bc05-81246e9d137e",
 			"key": "AppIdHeader",
 			"value": "MS-Int-AppId",
 			"type": "string"
 		},
 		{
-			"id": "9dac6d04-8be5-4f61-a5a7-056ba6a730fd",
+			"id": "e0783bd7-3eb2-4166-b8c7-6bbb6ba28480",
 			"key": "AppIdHeader_Value",
 			"value": "Testing",
 			"type": "string"
 		},
 		{
-			"id": "01d6276e-90bc-437c-9085-1292f1dfb5b0",
+			"id": "bec712e8-a5ea-4155-9447-dc921f430e7d",
 			"key": "Me",
 			"value": "{{Site}}/api/{{version}}/me",
 			"type": "string"
 		},
 		{
-			"id": "06a1148b-7b8f-4333-8c9c-6b31c406b78e",
+			"id": "742fe3e5-a792-4d81-bdca-8a8fe2aa28ef",
 			"key": "MeNotebooks",
 			"value": "{{Me}}/notes/notebooks",
 			"type": "string"
 		},
 		{
-			"id": "753558a1-7b10-46f4-813f-2fedd55827df",
+			"id": "3c8a8fce-e13c-419e-8277-b76987ae524a",
+			"key": "MeClassNotebooks",
+			"value": "{{Me}}/notes/classnotebooks",
+			"type": "string"
+		},
+		{
+			"id": "19f275ef-b303-4149-a4f4-703fd6a6b6ef",
+			"key": "MeSections",
+			"value": "{{Me}}/notes/sections",
+			"type": "string"
+		},
+		{
+			"id": "360048db-73d0-447e-aed2-35c2ba7858a4",
+			"key": "MeSectionGroups",
+			"value": "{{Me}}/notes/sectiongroups",
+			"type": "string"
+		},
+		{
+			"id": "4f27a6d6-3f1e-46bf-95d4-bbabd099591c",
+			"key": "MeResources",
+			"value": "{{Me}}/notes/resources",
+			"type": "string"
+		},
+		{
+			"id": "5fdac60b-3b39-4571-81e6-93019d9c8649",
 			"key": "WopiHost",
 			"value": "{{Site}}/host",
 			"type": "string"
 		},
 		{
-			"id": "21bce7bb-a66b-4c5e-8c43-9809ccadc7a0",
+			"id": "5947dd7b-e523-41f8-a381-e25c18e5de4b",
+			"key": "WOPIEndpoint",
+			"value": "{{Site}}/sync/{{WOPIVersion}}/Wopi",
+			"type": "string"
+		},
+		{
+			"id": "45b9c66e-69c2-4e5d-a024-883730a64bd1",
 			"key": "MePages",
 			"value": "{{Me}}/notes/pages",
 			"type": "string"
 		},
 		{
-			"id": "1f3b59cf-e276-4644-9f43-af923e124964",
+			"id": "ba676a04-bb19-48fc-8458-7b06f9ee6bc7",
 			"key": "PageId",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "817d88f8-14c4-4d18-8ca1-fdc1fb1555c7",
+			"id": "37093897-d77d-4507-9595-14e1959d3285",
+			"key": "SectionId",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"id": "237d5599-4101-435a-8932-6bde34a9581a",
+			"key": "SectionGroupId",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"id": "96a1290c-30cd-4892-83c4-60ba4e2b0ec8",
+			"key": "NotebookId",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"id": "dfb6b374-e3dd-41d1-9e50-a88b3ffe26a7",
+			"key": "ResourceId",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"id": "206cc4f3-f2f4-4414-9b36-a37a6adc60fb",
 			"key": "MachineName",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "e8a955f3-e8dc-4a8e-84c3-ea840800fbc2",
+			"id": "afd9a172-dac8-4132-a975-dfc8f036fdc2",
 			"key": "WebUrl",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "b8a349fc-1e61-467f-bf50-679f349204b7",
+			"id": "c2baf893-77a6-4a34-8a7a-1583bfde8e21",
 			"key": "WebUrls",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "357fb504-74e5-4d23-8302-d73ef034c76a",
-			"key": "Replace_TargetId",
+			"id": "23f9a02f-6b0b-4fc0-87a6-551a6465de74",
+			"key": "Target_Id",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"id": "f33c4304-01de-4132-8815-9222d534eaff",
+			"key": "Target_Body",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"id": "70082182-9386-4180-9fb0-0e4ee1c2d384",
+			"key": "HTMLContent",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"id": "f2433148-dbd3-4de6-b013-fa346ddb5d73",
+			"key": "Test_Title",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"id": "9ac8793c-b909-40a0-a8e6-b4bdbad410d6",
+			"key": "Test_JapaneseTitle",
 			"value": "",
 			"type": "string"
 		}
