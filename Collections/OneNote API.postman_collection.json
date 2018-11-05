@@ -137,31 +137,6 @@
 								}
 							},
 							"response": []
-						},
-						{
-							"name": "GetClassNotebooks",
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "{{AppIdHeader}}",
-										"value": "{{AppIdHeader_Value}}",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
-								"url": {
-									"raw": "{{MeClassNotebooks}}",
-									"host": [
-										"{{MeClassNotebooks}}"
-									]
-								},
-								"description": "Gets all notebooks from classnotebooks"
-							},
-							"response": []
 						}
 					],
 					"description": "All notebooks GET functions",
@@ -593,6 +568,50 @@
 				}
 			],
 			"description": "All Get Requests for Sections"
+		},
+		{
+			"name": "CLASSNOTEBOOKS",
+			"item": [
+				{
+					"name": "GET",
+					"item": [
+						{
+							"name": "Get all class notebooks at Me",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "{{AppIdHeader}}",
+										"type": "text",
+										"value": "{{AppIdHeader_Value}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{MeClassNotebooks}}?hasaccessto=true",
+									"host": [
+										"{{MeClassNotebooks}}"
+									],
+									"query": [
+										{
+											"key": "hasaccessto",
+											"value": "true",
+											"description": "Returns all class notebooks that the user has access to."
+										}
+									]
+								},
+								"description": "Gets all notebooks from classnotebooks"
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				}
+			],
+			"description": "All endpoints for ClassNotebooks requests"
 		}
 	],
 	"auth": {
@@ -629,145 +648,145 @@
 	],
 	"variable": [
 		{
-			"id": "e7ef96bb-6c34-42a6-bc05-81246e9d137e",
+			"id": "35157684-d420-4626-b039-e68bdb5a98fb",
 			"key": "AppIdHeader",
 			"value": "MS-Int-AppId",
 			"type": "string"
 		},
 		{
-			"id": "e0783bd7-3eb2-4166-b8c7-6bbb6ba28480",
+			"id": "829a708f-487d-48d6-9ec7-1ca7a370ab76",
 			"key": "AppIdHeader_Value",
 			"value": "Testing",
 			"type": "string"
 		},
 		{
-			"id": "bec712e8-a5ea-4155-9447-dc921f430e7d",
+			"id": "7d548fe8-f203-4a48-acfd-44ccc660c636",
 			"key": "Me",
 			"value": "{{Site}}/api/{{version}}/me",
 			"type": "string"
 		},
 		{
-			"id": "742fe3e5-a792-4d81-bdca-8a8fe2aa28ef",
+			"id": "4cc2445c-43b0-4948-9ff2-b6ae344bd195",
 			"key": "MeNotebooks",
 			"value": "{{Me}}/notes/notebooks",
 			"type": "string"
 		},
 		{
-			"id": "3c8a8fce-e13c-419e-8277-b76987ae524a",
+			"id": "f6f88668-ef07-4950-8ca1-ffe10ad9ecd2",
 			"key": "MeClassNotebooks",
 			"value": "{{Me}}/notes/classnotebooks",
 			"type": "string"
 		},
 		{
-			"id": "19f275ef-b303-4149-a4f4-703fd6a6b6ef",
+			"id": "68911d27-77a4-4f26-ae0e-4b700e447935",
 			"key": "MeSections",
 			"value": "{{Me}}/notes/sections",
 			"type": "string"
 		},
 		{
-			"id": "360048db-73d0-447e-aed2-35c2ba7858a4",
+			"id": "b1a09083-a903-4f1f-a5d8-c00593fc80a7",
 			"key": "MeSectionGroups",
 			"value": "{{Me}}/notes/sectiongroups",
 			"type": "string"
 		},
 		{
-			"id": "4f27a6d6-3f1e-46bf-95d4-bbabd099591c",
+			"id": "a0baaee2-9a0c-4d5f-bcf9-7e78826f70c3",
 			"key": "MeResources",
 			"value": "{{Me}}/notes/resources",
 			"type": "string"
 		},
 		{
-			"id": "5fdac60b-3b39-4571-81e6-93019d9c8649",
+			"id": "b6666443-ca86-46d7-989c-6940a7bd539b",
 			"key": "WopiHost",
 			"value": "{{Site}}/host",
 			"type": "string"
 		},
 		{
-			"id": "5947dd7b-e523-41f8-a381-e25c18e5de4b",
+			"id": "56e4dfcf-c0bc-423b-8780-93e76b5b99be",
 			"key": "WOPIEndpoint",
 			"value": "{{Site}}/sync/{{WOPIVersion}}/Wopi",
 			"type": "string"
 		},
 		{
-			"id": "45b9c66e-69c2-4e5d-a024-883730a64bd1",
+			"id": "d30a054b-7315-4b27-98b5-b73aa67eb6cb",
 			"key": "MePages",
 			"value": "{{Me}}/notes/pages",
 			"type": "string"
 		},
 		{
-			"id": "ba676a04-bb19-48fc-8458-7b06f9ee6bc7",
+			"id": "917b8d15-f231-4638-952e-f09822e68ab2",
 			"key": "PageId",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "37093897-d77d-4507-9595-14e1959d3285",
+			"id": "124d1e9f-dd8a-49d3-b1e2-f2818655f1e7",
 			"key": "SectionId",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "237d5599-4101-435a-8932-6bde34a9581a",
+			"id": "d1292b51-ac1e-4a99-97c9-8ad1ae3349d4",
 			"key": "SectionGroupId",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "96a1290c-30cd-4892-83c4-60ba4e2b0ec8",
+			"id": "0de8134c-c708-4894-ac96-7d83975812ac",
 			"key": "NotebookId",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "dfb6b374-e3dd-41d1-9e50-a88b3ffe26a7",
+			"id": "f4d87d9a-ee89-4cce-97c8-954d7d11cf06",
 			"key": "ResourceId",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "206cc4f3-f2f4-4414-9b36-a37a6adc60fb",
+			"id": "26c41787-47cd-42af-8dc1-4144626f386e",
 			"key": "MachineName",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "afd9a172-dac8-4132-a975-dfc8f036fdc2",
+			"id": "43d21a4b-a8e4-4eb5-97bf-bd7c4fd588d6",
 			"key": "WebUrl",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "c2baf893-77a6-4a34-8a7a-1583bfde8e21",
+			"id": "71632c9e-ce2e-4ef2-a6ec-a6fa8d00e409",
 			"key": "WebUrls",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "23f9a02f-6b0b-4fc0-87a6-551a6465de74",
+			"id": "6464e3bd-f143-40d0-aa6e-9f746fef19c7",
 			"key": "Target_Id",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "f33c4304-01de-4132-8815-9222d534eaff",
+			"id": "6bde8c50-4749-46d2-8f37-cb7f64015e24",
 			"key": "Target_Body",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "70082182-9386-4180-9fb0-0e4ee1c2d384",
+			"id": "4dc5948a-df21-4bc0-9549-231e6b0e4a18",
 			"key": "HTMLContent",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "f2433148-dbd3-4de6-b013-fa346ddb5d73",
+			"id": "2f2e44d6-ff6d-43e8-8d2e-69313ff82600",
 			"key": "Test_Title",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "9ac8793c-b909-40a0-a8e6-b4bdbad410d6",
+			"id": "3a1744df-ddfa-456e-a49a-2313db1dc86a",
 			"key": "Test_JapaneseTitle",
 			"value": "",
 			"type": "string"
