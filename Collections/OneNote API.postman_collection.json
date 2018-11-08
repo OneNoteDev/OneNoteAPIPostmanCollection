@@ -12,7 +12,7 @@
 					"name": "POST",
 					"item": [
 						{
-							"name": "GetNotebooksFromWebUrls",
+							"name": "GetNotebooksFromWebUrls at Me",
 							"request": {
 								"method": "POST",
 								"header": [
@@ -46,7 +46,7 @@
 							"response": []
 						},
 						{
-							"name": "GetNotebookFromWebUrl",
+							"name": "GetNotebookFromWebUrl at Me",
 							"request": {
 								"method": "POST",
 								"header": [
@@ -70,6 +70,40 @@
 									"raw": "{{MeNotebooks}}/GetNotebookFromWebUrl",
 									"host": [
 										"{{MeNotebooks}}"
+									],
+									"path": [
+										"GetNotebookFromWebUrl"
+									]
+								},
+								"description": "Gets the notebooks for a list of onenote weburls"
+							},
+							"response": []
+						},
+						{
+							"name": "GetNotebookFromWebUrl at User",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "{{AppIdHeader}}",
+										"type": "text",
+										"value": "{{AppIdHeader_Value}}"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"webUrl\":\"{{WebUrl}}\"}"
+								},
+								"url": {
+									"raw": "{{UserNotebooks}}/GetNotebookFromWebUrl",
+									"host": [
+										"{{UserNotebooks}}"
 									],
 									"path": [
 										"GetNotebookFromWebUrl"
@@ -648,147 +682,165 @@
 	],
 	"variable": [
 		{
-			"id": "35157684-d420-4626-b039-e68bdb5a98fb",
+			"id": "27dd41e1-9eb4-4bd1-a6b3-5951fe5c3c5b",
 			"key": "AppIdHeader",
 			"value": "MS-Int-AppId",
 			"type": "string"
 		},
 		{
-			"id": "829a708f-487d-48d6-9ec7-1ca7a370ab76",
+			"id": "bab30ef8-d149-4035-91cc-805066188bbd",
 			"key": "AppIdHeader_Value",
 			"value": "Testing",
 			"type": "string"
 		},
 		{
-			"id": "7d548fe8-f203-4a48-acfd-44ccc660c636",
+			"id": "83cd5418-04cc-4599-96c1-ba5782fee84f",
 			"key": "Me",
 			"value": "{{Site}}/api/{{version}}/me",
 			"type": "string"
 		},
 		{
-			"id": "4cc2445c-43b0-4948-9ff2-b6ae344bd195",
+			"id": "a5448c9f-6feb-4f28-a863-d2fa62bf1f0e",
 			"key": "MeNotebooks",
 			"value": "{{Me}}/notes/notebooks",
 			"type": "string"
 		},
 		{
-			"id": "f6f88668-ef07-4950-8ca1-ffe10ad9ecd2",
+			"id": "09cb72f3-8378-4e8c-99ea-9e9a48b68d18",
+			"key": "User",
+			"value": "{{Site}}/api/{{version}}/users('{{UserId}}')",
+			"type": "string"
+		},
+		{
+			"id": "3416584c-a122-46ff-adc2-118374d34d18",
+			"key": "UserNotebooks",
+			"value": "{{User}}/notes/notebooks",
+			"type": "string"
+		},
+		{
+			"id": "e4df61fa-296c-46b2-9c98-df0c2a4d0756",
 			"key": "MeClassNotebooks",
 			"value": "{{Me}}/notes/classnotebooks",
 			"type": "string"
 		},
 		{
-			"id": "68911d27-77a4-4f26-ae0e-4b700e447935",
+			"id": "261df2b5-5218-4c35-9790-c60360a3c8bd",
 			"key": "MeSections",
 			"value": "{{Me}}/notes/sections",
 			"type": "string"
 		},
 		{
-			"id": "b1a09083-a903-4f1f-a5d8-c00593fc80a7",
+			"id": "749901cd-60f9-4a51-b6a3-ad5f2064fdc4",
 			"key": "MeSectionGroups",
 			"value": "{{Me}}/notes/sectiongroups",
 			"type": "string"
 		},
 		{
-			"id": "a0baaee2-9a0c-4d5f-bcf9-7e78826f70c3",
+			"id": "2c478448-f0da-4e04-bfa5-e6c3d20b0764",
 			"key": "MeResources",
 			"value": "{{Me}}/notes/resources",
 			"type": "string"
 		},
 		{
-			"id": "b6666443-ca86-46d7-989c-6940a7bd539b",
+			"id": "0e5ccb28-79ae-49a8-bdda-4ff7228de9bd",
 			"key": "WopiHost",
 			"value": "{{Site}}/host",
 			"type": "string"
 		},
 		{
-			"id": "56e4dfcf-c0bc-423b-8780-93e76b5b99be",
+			"id": "07cc0245-c2d0-41df-aad5-400013bc496f",
 			"key": "WOPIEndpoint",
 			"value": "{{Site}}/sync/{{WOPIVersion}}/Wopi",
 			"type": "string"
 		},
 		{
-			"id": "d30a054b-7315-4b27-98b5-b73aa67eb6cb",
+			"id": "35e4cac5-5820-4e45-88dc-94daecdc4c1c",
 			"key": "MePages",
 			"value": "{{Me}}/notes/pages",
 			"type": "string"
 		},
 		{
-			"id": "917b8d15-f231-4638-952e-f09822e68ab2",
-			"key": "PageId",
-			"value": "",
-			"type": "string"
-		},
-		{
-			"id": "124d1e9f-dd8a-49d3-b1e2-f2818655f1e7",
-			"key": "SectionId",
-			"value": "",
-			"type": "string"
-		},
-		{
-			"id": "d1292b51-ac1e-4a99-97c9-8ad1ae3349d4",
-			"key": "SectionGroupId",
-			"value": "",
-			"type": "string"
-		},
-		{
-			"id": "0de8134c-c708-4894-ac96-7d83975812ac",
-			"key": "NotebookId",
-			"value": "",
-			"type": "string"
-		},
-		{
-			"id": "f4d87d9a-ee89-4cce-97c8-954d7d11cf06",
-			"key": "ResourceId",
-			"value": "",
-			"type": "string"
-		},
-		{
-			"id": "26c41787-47cd-42af-8dc1-4144626f386e",
-			"key": "MachineName",
-			"value": "",
-			"type": "string"
-		},
-		{
-			"id": "43d21a4b-a8e4-4eb5-97bf-bd7c4fd588d6",
-			"key": "WebUrl",
-			"value": "",
-			"type": "string"
-		},
-		{
-			"id": "71632c9e-ce2e-4ef2-a6ec-a6fa8d00e409",
-			"key": "WebUrls",
-			"value": "",
-			"type": "string"
-		},
-		{
-			"id": "6464e3bd-f143-40d0-aa6e-9f746fef19c7",
-			"key": "Target_Id",
-			"value": "",
-			"type": "string"
-		},
-		{
-			"id": "6bde8c50-4749-46d2-8f37-cb7f64015e24",
+			"id": "e950e3fd-449d-4b76-bedf-6a4fafceed10",
 			"key": "Target_Body",
-			"value": "",
+			"value": "body",
 			"type": "string"
 		},
 		{
-			"id": "4dc5948a-df21-4bc0-9549-231e6b0e4a18",
+			"id": "cb458a39-1623-4638-805d-20bb6a14e1d2",
+			"key": "UserId",
+			"value": "<Update current value only, leave this initial value as is>",
+			"type": "string"
+		},
+		{
+			"id": "f4fb182b-6464-4825-b475-d8d83025b594",
+			"key": "PageId",
+			"value": "<Update current value only, leave this initial value as is>",
+			"type": "string"
+		},
+		{
+			"id": "a282b197-5e2c-4f27-8d68-d5bdeec7b2c6",
+			"key": "SectionId",
+			"value": "<Update current value only, leave this initial value as is>",
+			"type": "string"
+		},
+		{
+			"id": "19011c28-0885-4481-b966-e7e043304cce",
+			"key": "SectionGroupId",
+			"value": "<Update current value only, leave this initial value as is>",
+			"type": "string"
+		},
+		{
+			"id": "0dde8fa3-7db3-49f9-ad00-2b0746ab113a",
+			"key": "NotebookId",
+			"value": "<Update current value only, leave this initial value as is>",
+			"type": "string"
+		},
+		{
+			"id": "295ad84f-8345-459d-83b5-52dc28cb6b4c",
+			"key": "ResourceId",
+			"value": "<Update current value only, leave this initial value as is>",
+			"type": "string"
+		},
+		{
+			"id": "c66ce02b-d97d-49ec-a707-fdf3b7711220",
+			"key": "MachineName",
+			"value": "<Update current value only, leave this initial value as is>",
+			"type": "string"
+		},
+		{
+			"id": "e0df9ae4-0840-41ec-8397-e9a9a59d953d",
+			"key": "WebUrl",
+			"value": "<Update current value only, leave this initial value as is>",
+			"type": "string"
+		},
+		{
+			"id": "144bc424-902e-474f-b239-0ac931dae5a1",
+			"key": "WebUrls",
+			"value": "<Update current value only, leave this initial value as is>",
+			"type": "string"
+		},
+		{
+			"id": "d88b074f-b159-42c7-a904-b6e3fd351639",
+			"key": "Target_Id",
+			"value": "<Update current value only, leave this initial value as is>",
+			"type": "string"
+		},
+		{
+			"id": "1304283e-6fb6-4f28-ad6e-20009dc50a18",
 			"key": "HTMLContent",
-			"value": "",
+			"value": "<Update current value only, leave this initial value as is>",
 			"type": "string"
 		},
 		{
-			"id": "2f2e44d6-ff6d-43e8-8d2e-69313ff82600",
+			"id": "38061292-d589-4b22-b97d-e9874e1eb410",
 			"key": "Test_Title",
-			"value": "",
+			"value": "<Update current value only, leave this initial value as is>",
 			"type": "string"
 		},
 		{
-			"id": "3a1744df-ddfa-456e-a49a-2313db1dc86a",
+			"id": "ff04f9cb-d831-4f7e-904a-45e2dbf05016",
 			"key": "Test_JapaneseTitle",
-			"value": "",
+			"value": "<Update current value only, leave this initial value as is>",
 			"type": "string"
 		}
 	]
