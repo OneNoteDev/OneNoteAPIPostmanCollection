@@ -112,6 +112,21 @@
 								"description": "Gets the notebooks for a list of onenote weburls"
 							},
 							"response": []
+						},
+						{
+							"name": "CreateNewNotebook",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": ""
+								}
+							},
+							"response": []
 						}
 					],
 					"description": "All available POST actions in Notebooks API",
@@ -653,7 +668,7 @@
 		"bearer": [
 			{
 				"key": "token",
-				"value": "{{AuthToken}}",
+				"value": "{{{{AuthToken}}}}",
 				"type": "string"
 			}
 		]
@@ -665,7 +680,72 @@
 				"id": "4fcc87ca-73a0-4014-93cd-88c9089ecd59",
 				"type": "text/javascript",
 				"exec": [
-					""
+					"const AuthTokenName = \"AuthToken\";",
+					"const AuthTokenExpName = \"AuthTokenExp\";",
+					"const AuthTokenUrlName = \"AuthTokenUrl\";",
+					"const ClientIdName = \"ClientId\";",
+					"const passwordName = \"password\";",
+					"const usernameName = \"username\";",
+					"const resource = \"https://officeapps.live.com\";",
+					"const scope = \"openid\";",
+					"",
+					"// Object used to request an authtoken",
+					"// Based on currently selected postman environment",
+					"const echoPostRequest = {",
+					"  url:getGlobalVarThroughEnvironmentVar(AuthTokenUrlName),",
+					"  method: 'POST',",
+					"    body: {",
+					"            mode: 'urlencoded',",
+					"            urlencoded: [",
+					"                    { key: \"grant_type\", value: \"password\" },",
+					"                    { key: \"username\", value:  getGlobalVarThroughEnvironmentVar(usernameName)},",
+					"                    { key: \"password\", value: getGlobalVarThroughEnvironmentVar(passwordName) },",
+					"                    { key: \"resource\", value: resource },",
+					"                    { key: \"scope\", value: scope },",
+					"                    { key: \"client_id\", value: getGlobalVarThroughEnvironmentVar(ClientIdName)}",
+					"            ]",
+					"        }",
+					"}",
+					"",
+					"// Verify if the AuthToken needs to be refreshed",
+					"if (!getGlobalVarThroughEnvironmentVar(AuthTokenName) || ",
+					"    !getGlobalVarThroughEnvironmentVar(AuthTokenExpName)) {",
+					"    console.log('AuthToken or expiry date are missing')",
+					"    requestAuthToken();",
+					"}",
+					"else if (getGlobalVarThroughEnvironmentVar(AuthTokenExpName) <= (new Date()).getTime()) {",
+					"    console.log('AuthToken is expired')",
+					"    requestAuthToken();",
+					"}",
+					"else {",
+					"    console.log(\"Current AuthToken is still valid.\");",
+					"}",
+					"",
+					"// Makes a request to bet a new AuthToken.",
+					"// This will store the new auth token as a global variable.",
+					"function requestAuthToken (){",
+					"    pm.sendRequest(echoPostRequest, function (err, res) {",
+					"    console.log(err ? err : res.json());",
+					"        if (err === null) {",
+					"            console.log('Saving the token and expiry date')",
+					"            var responseJson = res.json();",
+					"            setGlobalVarThroughEnvironmentVar(AuthTokenName, responseJson.access_token)",
+					"    ",
+					"            var expiryDate = new Date();",
+					"            expiryDate.setSeconds(expiryDate.getSeconds() + responseJson.expires_in);",
+					"            setGlobalVarThroughEnvironmentVar(AuthTokenExpName, expiryDate.getTime());",
+					"        }",
+					"    });",
+					"}",
+					"",
+					"// Using an env variable to grab the global variable allows us to avoid checking for what env we are running on here. Instead we rely on postman's current env selection to search for the right global variable. See how globals are setup (they are basically a collection of both prod and ppe environment variables that are selected based on the env we are running)",
+					"function getGlobalVarThroughEnvironmentVar(varName){",
+					"    return pm.globals.get(pm.environment.get(varName));",
+					"}",
+					"",
+					"function setGlobalVarThroughEnvironmentVar(varName, value){",
+					"    return pm.globals.set(pm.environment.get(varName),value);",
+					"}"
 				]
 			}
 		},
@@ -682,164 +762,170 @@
 	],
 	"variable": [
 		{
-			"id": "27dd41e1-9eb4-4bd1-a6b3-5951fe5c3c5b",
+			"id": "944ea569-9ccb-4142-bafe-1f91d21966ec",
 			"key": "AppIdHeader",
 			"value": "MS-Int-AppId",
 			"type": "string"
 		},
 		{
-			"id": "bab30ef8-d149-4035-91cc-805066188bbd",
+			"id": "a5c1724e-4999-43ed-b313-903cca95072a",
 			"key": "AppIdHeader_Value",
 			"value": "Testing",
 			"type": "string"
 		},
 		{
-			"id": "83cd5418-04cc-4599-96c1-ba5782fee84f",
+			"id": "4974d457-4da1-41a5-af81-1831e596c16c",
 			"key": "Me",
 			"value": "{{Site}}/api/{{version}}/me",
 			"type": "string"
 		},
 		{
-			"id": "a5448c9f-6feb-4f28-a863-d2fa62bf1f0e",
+			"id": "98d97588-53a7-47df-a421-2540f3392088",
 			"key": "MeNotebooks",
 			"value": "{{Me}}/notes/notebooks",
 			"type": "string"
 		},
 		{
-			"id": "09cb72f3-8378-4e8c-99ea-9e9a48b68d18",
+			"id": "8a38cd0e-1221-4e30-bc41-4bdb76007981",
 			"key": "User",
 			"value": "{{Site}}/api/{{version}}/users('{{UserId}}')",
 			"type": "string"
 		},
 		{
-			"id": "3416584c-a122-46ff-adc2-118374d34d18",
+			"id": "a84f3e15-d116-4895-8473-1dfb4af2c1f9",
 			"key": "UserNotebooks",
 			"value": "{{User}}/notes/notebooks",
 			"type": "string"
 		},
 		{
-			"id": "e4df61fa-296c-46b2-9c98-df0c2a4d0756",
+			"id": "833b68bc-877e-4431-af63-063cb61a058b",
 			"key": "MeClassNotebooks",
 			"value": "{{Me}}/notes/classnotebooks",
 			"type": "string"
 		},
 		{
-			"id": "261df2b5-5218-4c35-9790-c60360a3c8bd",
+			"id": "de23dabd-833f-45e0-acaf-a53a5052736d",
 			"key": "MeSections",
 			"value": "{{Me}}/notes/sections",
 			"type": "string"
 		},
 		{
-			"id": "749901cd-60f9-4a51-b6a3-ad5f2064fdc4",
+			"id": "46e64f47-3f5b-4c0c-a02f-9165393e5f07",
 			"key": "MeSectionGroups",
 			"value": "{{Me}}/notes/sectiongroups",
 			"type": "string"
 		},
 		{
-			"id": "2c478448-f0da-4e04-bfa5-e6c3d20b0764",
+			"id": "47ac2929-6a60-48df-89fb-a9b5ef8477c6",
 			"key": "MeResources",
 			"value": "{{Me}}/notes/resources",
 			"type": "string"
 		},
 		{
-			"id": "0e5ccb28-79ae-49a8-bdda-4ff7228de9bd",
+			"id": "c97bf9e3-e619-4041-b05d-68e39c29e730",
 			"key": "WopiHost",
 			"value": "{{Site}}/host",
 			"type": "string"
 		},
 		{
-			"id": "07cc0245-c2d0-41df-aad5-400013bc496f",
+			"id": "292036fb-4115-4346-b358-d2ed84285c68",
 			"key": "WOPIEndpoint",
 			"value": "{{Site}}/sync/{{WOPIVersion}}/Wopi",
 			"type": "string"
 		},
 		{
-			"id": "35e4cac5-5820-4e45-88dc-94daecdc4c1c",
+			"id": "ce78324b-56f2-4721-bbae-ecf20b252ff3",
 			"key": "MePages",
 			"value": "{{Me}}/notes/pages",
 			"type": "string"
 		},
 		{
-			"id": "e950e3fd-449d-4b76-bedf-6a4fafceed10",
+			"id": "ee2c2a0f-1a8d-4c3e-82a5-a86161dde602",
 			"key": "Target_Body",
 			"value": "body",
 			"type": "string"
 		},
 		{
-			"id": "cb458a39-1623-4638-805d-20bb6a14e1d2",
+			"id": "e003e729-3bfe-4eca-8e9d-886e06b237b8",
 			"key": "UserId",
 			"value": "<Update current value only, leave this initial value as is>",
 			"type": "string"
 		},
 		{
-			"id": "f4fb182b-6464-4825-b475-d8d83025b594",
+			"id": "2b6cd8eb-e3d4-4eef-ae3b-3d8dcd253b88",
 			"key": "PageId",
 			"value": "<Update current value only, leave this initial value as is>",
 			"type": "string"
 		},
 		{
-			"id": "a282b197-5e2c-4f27-8d68-d5bdeec7b2c6",
+			"id": "b047d47d-c99a-44c5-935d-971b9a5fb87a",
 			"key": "SectionId",
 			"value": "<Update current value only, leave this initial value as is>",
 			"type": "string"
 		},
 		{
-			"id": "19011c28-0885-4481-b966-e7e043304cce",
+			"id": "9ee943e5-60a1-44a5-a0c8-aafa8de86a27",
 			"key": "SectionGroupId",
 			"value": "<Update current value only, leave this initial value as is>",
 			"type": "string"
 		},
 		{
-			"id": "0dde8fa3-7db3-49f9-ad00-2b0746ab113a",
+			"id": "97b5fc7d-886c-4bbb-a00e-052c08cf92d4",
 			"key": "NotebookId",
 			"value": "<Update current value only, leave this initial value as is>",
 			"type": "string"
 		},
 		{
-			"id": "295ad84f-8345-459d-83b5-52dc28cb6b4c",
+			"id": "4c8bb370-0c98-4dad-9781-fe46b8626e12",
 			"key": "ResourceId",
 			"value": "<Update current value only, leave this initial value as is>",
 			"type": "string"
 		},
 		{
-			"id": "c66ce02b-d97d-49ec-a707-fdf3b7711220",
+			"id": "9c29be8a-392d-444b-9207-6b02d6ff120c",
 			"key": "MachineName",
 			"value": "<Update current value only, leave this initial value as is>",
 			"type": "string"
 		},
 		{
-			"id": "e0df9ae4-0840-41ec-8397-e9a9a59d953d",
+			"id": "8e81cc0a-8361-415f-877e-da7185c1037c",
 			"key": "WebUrl",
 			"value": "<Update current value only, leave this initial value as is>",
 			"type": "string"
 		},
 		{
-			"id": "144bc424-902e-474f-b239-0ac931dae5a1",
+			"id": "2837b63e-520d-478c-a736-737ccb26f2ea",
 			"key": "WebUrls",
 			"value": "<Update current value only, leave this initial value as is>",
 			"type": "string"
 		},
 		{
-			"id": "d88b074f-b159-42c7-a904-b6e3fd351639",
+			"id": "95dd85aa-9856-49f5-9a65-3942dd5b30f1",
 			"key": "Target_Id",
 			"value": "<Update current value only, leave this initial value as is>",
 			"type": "string"
 		},
 		{
-			"id": "1304283e-6fb6-4f28-ad6e-20009dc50a18",
+			"id": "35c8ad64-c57d-4459-b84e-a99e7e630ba6",
 			"key": "HTMLContent",
 			"value": "<Update current value only, leave this initial value as is>",
 			"type": "string"
 		},
 		{
-			"id": "38061292-d589-4b22-b97d-e9874e1eb410",
+			"id": "d24a5daa-1561-4583-8905-82ca4bb0df26",
 			"key": "Test_Title",
 			"value": "<Update current value only, leave this initial value as is>",
 			"type": "string"
 		},
 		{
-			"id": "ff04f9cb-d831-4f7e-904a-45e2dbf05016",
+			"id": "38a5a4e4-c6aa-458a-9e08-35ae790e81ce",
 			"key": "Test_JapaneseTitle",
+			"value": "<Update current value only, leave this initial value as is>",
+			"type": "string"
+		},
+		{
+			"id": "d6df31e0-8442-431f-a219-f37b76983e53",
+			"key": "NotebookName",
 			"value": "<Update current value only, leave this initial value as is>",
 			"type": "string"
 		}
