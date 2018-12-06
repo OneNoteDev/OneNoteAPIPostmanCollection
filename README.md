@@ -25,23 +25,17 @@
 
 ![Manage_Environments-Import](/img/Collection-Variables.gif)
 
-    b.- Go back into the "Manage Environments" menu and click on the "Globals" button. Here you will see the two different types of AuthTokens used to contact Production or PPE environments.
+    b.- Go back into the "Manage Environments" menu and click on the "Globals" button. Here you will see the settings postman will use to automatically generate AuthTokens. There are two different types of AuthTokens: Production or PPE environments.
 ![Manage_Environments-Import](/img/Manage_Environments-Globals.gif)
 
-You can use the ticketizer tool to create the AuthTokens: http://toolbox/ticketizer
-Open the tool, go to the ADAL tab and hit the "Ticket Please!!" button to the right:
-![Manage_Environments-Import](/img/CreateAuthToken.gif)
+You will need to fill the following variables in order for postman to be able to get a valid AuthToken:
 
-This will generate a token for the production environment token. Copy the token from there and paste it in the "Prod_AuthToken" variable current value.
-You can also generate a token for the "PPE_AuthToken" variable by clicking in the "INT/PPE" radio button in ticketizer before generating the token.
-![Manage_Environments-Import](/img/CreateAuthToken_PPE.gif)
+Prod_UserName | PPE_UserName: The username for the account holding the notebooks you want to access using the onenote API (usually in the form of an email).
+Prod_Password | PPE_Password: The password to access the account specified in the username field.
+Prod_client_id | PPE_client_id: The client id of the application that is requesting the account access.
 
-Add the necessary auth tokens to these variables (CURRENT VALUE ONLY) and hit save. 
-
-The AuthTokens will expire after a while so you will have to come back and update their values every time
-that happens.
-
-Now you should be able to open any of the requests and hit the Send button to execute.
+Once you have filled these three fields save your changes and go back to the main postman screen.
+Now you should be able to open any of the requests and hit the Send button to execute, postman will automatically fetch a new AuthToken whenever it is required.
 
 # Configuring SSL
 
