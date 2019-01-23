@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "d47a140e-a7cb-49f9-9fdf-d434509b8abf",
+		"_postman_id": "944253e2-1208-42a2-8000-4e3ff32993fc",
 		"name": "OneNote API",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -114,17 +114,70 @@
 							"response": []
 						},
 						{
-							"name": "CreateNewNotebook",
+							"name": "GetNotebookFromWebUrl at MyOrg SiteId",
 							"request": {
-								"method": "GET",
-								"header": [],
+								"method": "POST",
+								"header": [
+									{
+										"key": "{{AppIdHeader}}",
+										"type": "text",
+										"value": "{{AppIdHeader_Value}}"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
 								"body": {
 									"mode": "raw",
-									"raw": ""
+									"raw": "{\"webUrl\":\"{{WebUrl}}\"}"
 								},
 								"url": {
-									"raw": ""
-								}
+									"raw": "{{MyOrgSiteNotebooks}}/GetNotebookFromWebUrl",
+									"host": [
+										"{{MyOrgSiteNotebooks}}"
+									],
+									"path": [
+										"GetNotebookFromWebUrl"
+									]
+								},
+								"description": "Gets the notebooks for a list of onenote weburls"
+							},
+							"response": []
+						},
+						{
+							"name": "GetNotebookFromWebUrl at MyOrg Group",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "{{AppIdHeader}}",
+										"type": "text",
+										"value": "{{AppIdHeader_Value}}"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"webUrl\":\"{{WebUrl}}\"}"
+								},
+								"url": {
+									"raw": "{{MyOrgGroupNotebooks}}/GetNotebookFromWebUrl",
+									"host": [
+										"{{MyOrgGroupNotebooks}}"
+									],
+									"path": [
+										"GetNotebookFromWebUrl"
+									]
+								},
+								"description": "Gets the notebooks for a list of onenote weburls"
 							},
 							"response": []
 						}
@@ -192,84 +245,6 @@
 					"_postman_isSubFolder": true
 				}
 			]
-		},
-		{
-			"name": "WOPI",
-			"item": [
-				{
-					"name": "GET",
-					"item": [
-						{
-							"name": "go",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
-								"url": {
-									"raw": "{{WopiHost}}/go",
-									"host": [
-										"{{WopiHost}}"
-									],
-									"path": [
-										"go"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "go/newpage",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
-								"url": {
-									"raw": "{{WopiHost}}/go/newpage",
-									"host": [
-										"{{WopiHost}}"
-									],
-									"path": [
-										"go",
-										"newpage"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "ping  host",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
-								"url": {
-									"raw": "{{WOPIEndpoint}}/ping",
-									"host": [
-										"{{WOPIEndpoint}}"
-									],
-									"path": [
-										"ping"
-									]
-								},
-								"description": "Pings the WOPI host endpoint."
-							},
-							"response": []
-						}
-					],
-					"description": "All the WOPI GET Requests.",
-					"_postman_isSubFolder": true
-				}
-			],
-			"description": "Wopi endpoints."
 		},
 		{
 			"name": "RESOURCES",
@@ -718,7 +693,7 @@
 					"    requestAuthToken();",
 					"}",
 					"else {",
-					"    console.log(\"Current AuthToken is still valid.\");",
+					"    console.log(\"Current AuthToken is still valid. Current Time: \" + (new Date()) + \" Expiry Time: \" + (new Date(getGlobalVarThroughEnvironmentVar(AuthTokenExpName))));",
 					"}",
 					"",
 					"// Makes a request to bet a new AuthToken.",
@@ -729,10 +704,14 @@
 					"        if (err === null) {",
 					"            console.log('Saving the token and expiry date')",
 					"            var responseJson = res.json();",
+					"            // Turn seconds into milliseconds.",
+					"            var expiresInMs = responseJson.expires_in * 1000;",
 					"            setGlobalVarThroughEnvironmentVar(AuthTokenName, responseJson.access_token)",
 					"    ",
-					"            var expiryDate = new Date();",
-					"            expiryDate.setSeconds(expiryDate.getSeconds() + responseJson.expires_in);",
+					"            // Define expiryDate by adding the milliseconds of expiration to current datetime.",
+					"            var currentDate = new Date();",
+					"            var expiryDate = new Date(currentDate.getTime() + expiresInMs);",
+					"            console.log(\"Expires at: \" + expiryDate);",
 					"            setGlobalVarThroughEnvironmentVar(AuthTokenExpName, expiryDate.getTime());",
 					"        }",
 					"    });",
@@ -762,170 +741,206 @@
 	],
 	"variable": [
 		{
-			"id": "944ea569-9ccb-4142-bafe-1f91d21966ec",
+			"id": "a2c0d33a-2793-488a-999e-18f8f40e111f",
 			"key": "AppIdHeader",
 			"value": "MS-Int-AppId",
 			"type": "string"
 		},
 		{
-			"id": "a5c1724e-4999-43ed-b313-903cca95072a",
+			"id": "9170e4f4-c838-4db7-ba65-52aab8cd69f3",
 			"key": "AppIdHeader_Value",
 			"value": "Testing",
 			"type": "string"
 		},
 		{
-			"id": "4974d457-4da1-41a5-af81-1831e596c16c",
+			"id": "261e17ef-f123-4586-84b8-3be136954f2a",
 			"key": "Me",
 			"value": "{{Site}}/api/{{version}}/me",
 			"type": "string"
 		},
 		{
-			"id": "98d97588-53a7-47df-a421-2540f3392088",
+			"id": "76f8b2db-3cad-4c79-8010-3123325da426",
 			"key": "MeNotebooks",
 			"value": "{{Me}}/notes/notebooks",
 			"type": "string"
 		},
 		{
-			"id": "8a38cd0e-1221-4e30-bc41-4bdb76007981",
+			"id": "62689b42-d2cd-4df4-8b6c-6732294017e8",
 			"key": "User",
 			"value": "{{Site}}/api/{{version}}/users('{{UserId}}')",
 			"type": "string"
 		},
 		{
-			"id": "a84f3e15-d116-4895-8473-1dfb4af2c1f9",
+			"id": "d666c776-ee5c-4858-8284-686f9789e7c3",
 			"key": "UserNotebooks",
 			"value": "{{User}}/notes/notebooks",
 			"type": "string"
 		},
 		{
-			"id": "833b68bc-877e-4431-af63-063cb61a058b",
+			"id": "3677a20a-9763-458c-8608-2ee385cce698",
+			"key": "MyOrg",
+			"value": "{{Site}}/api/{{version}}/myorganization",
+			"type": "string"
+		},
+		{
+			"id": "429783c5-ab4b-4b66-9fc6-29c3b688b9b2",
+			"key": "MyOrgSite",
+			"value": "{{MyOrg}}/sitecollections/{{SiteCollectionId}}/",
+			"type": "string"
+		},
+		{
+			"id": "8713c364-558d-43da-abc3-e2a4158b2ed0",
+			"key": "MyOrgSiteNotebooks",
+			"value": "{{MyOrgSite}}/notes/notebooks",
+			"type": "string"
+		},
+		{
+			"id": "bae67ffc-b942-498c-a233-d558f1910724",
+			"key": "MyOrgGroup",
+			"value": "{{MyOrg}}/groups/{{GroupId}}",
+			"type": "string"
+		},
+		{
+			"id": "9fc80f3d-076f-442d-a5fe-c5d942ec2b39",
+			"key": "MyOrgGroupNotebooks",
+			"value": "{{MyOrgGroup}}/notes/notebooks",
+			"type": "string"
+		},
+		{
+			"id": "70fc9a81-6dab-417d-8686-65f14a96c9c8",
 			"key": "MeClassNotebooks",
 			"value": "{{Me}}/notes/classnotebooks",
 			"type": "string"
 		},
 		{
-			"id": "de23dabd-833f-45e0-acaf-a53a5052736d",
+			"id": "78f1ecf9-c337-4aa0-bac7-bf20bbae3243",
 			"key": "MeSections",
 			"value": "{{Me}}/notes/sections",
 			"type": "string"
 		},
 		{
-			"id": "46e64f47-3f5b-4c0c-a02f-9165393e5f07",
+			"id": "911a6cc8-5337-4baa-b4c4-5988b8daa805",
 			"key": "MeSectionGroups",
 			"value": "{{Me}}/notes/sectiongroups",
 			"type": "string"
 		},
 		{
-			"id": "47ac2929-6a60-48df-89fb-a9b5ef8477c6",
+			"id": "1f58075d-2898-4c2f-bb6a-686bfa7c538b",
 			"key": "MeResources",
 			"value": "{{Me}}/notes/resources",
 			"type": "string"
 		},
 		{
-			"id": "c97bf9e3-e619-4041-b05d-68e39c29e730",
-			"key": "WopiHost",
-			"value": "{{Site}}/host",
-			"type": "string"
-		},
-		{
-			"id": "292036fb-4115-4346-b358-d2ed84285c68",
-			"key": "WOPIEndpoint",
-			"value": "{{Site}}/sync/{{WOPIVersion}}/Wopi",
-			"type": "string"
-		},
-		{
-			"id": "ce78324b-56f2-4721-bbae-ecf20b252ff3",
+			"id": "65603bc4-ca61-420b-92ce-5018aec7f020",
 			"key": "MePages",
 			"value": "{{Me}}/notes/pages",
 			"type": "string"
 		},
 		{
-			"id": "ee2c2a0f-1a8d-4c3e-82a5-a86161dde602",
+			"id": "39f3fc95-3875-4110-b367-9a2791b2c555",
 			"key": "Target_Body",
 			"value": "body",
 			"type": "string"
 		},
 		{
-			"id": "e003e729-3bfe-4eca-8e9d-886e06b237b8",
+			"id": "ae07e478-fa7b-466d-94df-72cb00e9155c",
 			"key": "UserId",
 			"value": "<Update current value only, leave this initial value as is>",
 			"type": "string"
 		},
 		{
-			"id": "2b6cd8eb-e3d4-4eef-ae3b-3d8dcd253b88",
+			"id": "0ac7938f-3cbf-4be5-aa3d-0c67f196ef78",
 			"key": "PageId",
 			"value": "<Update current value only, leave this initial value as is>",
 			"type": "string"
 		},
 		{
-			"id": "b047d47d-c99a-44c5-935d-971b9a5fb87a",
+			"id": "576f5f2a-d7fe-4865-bd5e-831b8d76af78",
 			"key": "SectionId",
 			"value": "<Update current value only, leave this initial value as is>",
 			"type": "string"
 		},
 		{
-			"id": "9ee943e5-60a1-44a5-a0c8-aafa8de86a27",
+			"id": "e847237d-1de4-411c-bc56-903656b27c91",
 			"key": "SectionGroupId",
 			"value": "<Update current value only, leave this initial value as is>",
 			"type": "string"
 		},
 		{
-			"id": "97b5fc7d-886c-4bbb-a00e-052c08cf92d4",
+			"id": "18736d3d-6222-417f-a090-405b596f7389",
 			"key": "NotebookId",
 			"value": "<Update current value only, leave this initial value as is>",
 			"type": "string"
 		},
 		{
-			"id": "4c8bb370-0c98-4dad-9781-fe46b8626e12",
+			"id": "d8e73b01-bdbe-4bd5-ac2a-fff931bdaafe",
 			"key": "ResourceId",
 			"value": "<Update current value only, leave this initial value as is>",
 			"type": "string"
 		},
 		{
-			"id": "9c29be8a-392d-444b-9207-6b02d6ff120c",
-			"key": "MachineName",
+			"id": "227dde8a-2e30-442d-9d56-2ef27d84c5e7",
+			"key": "WebUrl-PPE",
 			"value": "<Update current value only, leave this initial value as is>",
 			"type": "string"
 		},
 		{
-			"id": "8e81cc0a-8361-415f-877e-da7185c1037c",
+			"id": "82a6f2b1-0491-44c0-9704-d46bf5bd8b14",
+			"key": "WebUrl-PROD",
+			"value": "<Update current value only, leave this initial value as is>",
+			"type": "string"
+		},
+		{
+			"id": "8c5ef9f5-a92e-4f48-b618-cf969ec4184a",
 			"key": "WebUrl",
-			"value": "<Update current value only, leave this initial value as is>",
+			"value": "{{WebUrl-{{EnvVariableSufix}}}}",
 			"type": "string"
 		},
 		{
-			"id": "2837b63e-520d-478c-a736-737ccb26f2ea",
+			"id": "d859dfef-f590-4ed0-a42b-7df66a38a9cd",
 			"key": "WebUrls",
 			"value": "<Update current value only, leave this initial value as is>",
 			"type": "string"
 		},
 		{
-			"id": "95dd85aa-9856-49f5-9a65-3942dd5b30f1",
+			"id": "9ed5e229-fab1-45d7-8420-c976e5cabe8b",
 			"key": "Target_Id",
 			"value": "<Update current value only, leave this initial value as is>",
 			"type": "string"
 		},
 		{
-			"id": "35c8ad64-c57d-4459-b84e-a99e7e630ba6",
+			"id": "8ebe48cb-1364-4e8c-afea-2cbb2a5c43d5",
 			"key": "HTMLContent",
 			"value": "<Update current value only, leave this initial value as is>",
 			"type": "string"
 		},
 		{
-			"id": "d24a5daa-1561-4583-8905-82ca4bb0df26",
+			"id": "0b1a149a-980d-4795-8729-6294b129d3df",
 			"key": "Test_Title",
 			"value": "<Update current value only, leave this initial value as is>",
 			"type": "string"
 		},
 		{
-			"id": "38a5a4e4-c6aa-458a-9e08-35ae790e81ce",
+			"id": "fcd9268b-6137-4560-9092-11c613aa2f73",
 			"key": "Test_JapaneseTitle",
 			"value": "<Update current value only, leave this initial value as is>",
 			"type": "string"
 		},
 		{
-			"id": "d6df31e0-8442-431f-a219-f37b76983e53",
+			"id": "a4660b5b-68b7-4e29-9976-3c77c1141b0a",
 			"key": "NotebookName",
+			"value": "<Update current value only, leave this initial value as is>",
+			"type": "string"
+		},
+		{
+			"id": "7178fbb5-325f-4f2e-ab7e-8260da569d92",
+			"key": "SiteCollectionId",
+			"value": "<Update current value only, leave this initial value as is>",
+			"type": "string"
+		},
+		{
+			"id": "2568a7a1-5d81-4417-9376-39bf2528a310",
+			"key": "GroupId",
 			"value": "<Update current value only, leave this initial value as is>",
 			"type": "string"
 		}
