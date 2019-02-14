@@ -636,6 +636,36 @@
 				}
 			],
 			"description": "All endpoints for ClassNotebooks requests"
+		},
+		{
+			"name": "GetAPIMetadata",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "{{AppIdHeader}}",
+						"value": "{{AppIdHeader_Value}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{Site}}/api/{{version}}/$metadata",
+					"host": [
+						"{{Site}}"
+					],
+					"path": [
+						"api",
+						"{{version}}",
+						"$metadata"
+					]
+				},
+				"description": "Gets the APIs metadata as defined by the OData specification.  "
+			},
+			"response": []
 		}
 	],
 	"auth": {
@@ -741,205 +771,205 @@
 	],
 	"variable": [
 		{
-			"id": "a2c0d33a-2793-488a-999e-18f8f40e111f",
+			"id": "1d07603c-f351-4415-8849-eada782ba233",
 			"key": "AppIdHeader",
 			"value": "MS-Int-AppId",
 			"type": "string"
 		},
 		{
-			"id": "9170e4f4-c838-4db7-ba65-52aab8cd69f3",
+			"id": "34ed457e-70f6-43f0-bbb3-cdd67fef75b8",
 			"key": "AppIdHeader_Value",
 			"value": "Testing",
 			"type": "string"
 		},
 		{
-			"id": "261e17ef-f123-4586-84b8-3be136954f2a",
+			"id": "79af2456-8e75-4426-b00f-96e9579a4725",
 			"key": "Me",
 			"value": "{{Site}}/api/{{version}}/me",
 			"type": "string"
 		},
 		{
-			"id": "76f8b2db-3cad-4c79-8010-3123325da426",
+			"id": "6f566ee8-3211-4cd8-8720-f1de234c82f6",
 			"key": "MeNotebooks",
 			"value": "{{Me}}/notes/notebooks",
 			"type": "string"
 		},
 		{
-			"id": "62689b42-d2cd-4df4-8b6c-6732294017e8",
+			"id": "36fd0299-9125-4d47-b1c3-4a8281f64f57",
 			"key": "User",
 			"value": "{{Site}}/api/{{version}}/users('{{UserId}}')",
 			"type": "string"
 		},
 		{
-			"id": "d666c776-ee5c-4858-8284-686f9789e7c3",
+			"id": "0ec072da-e06e-48da-90da-f0d524a359f8",
 			"key": "UserNotebooks",
 			"value": "{{User}}/notes/notebooks",
 			"type": "string"
 		},
 		{
-			"id": "3677a20a-9763-458c-8608-2ee385cce698",
+			"id": "165c7318-dcc1-4c0d-b42f-ef7033f1d199",
 			"key": "MyOrg",
 			"value": "{{Site}}/api/{{version}}/myorganization",
 			"type": "string"
 		},
 		{
-			"id": "429783c5-ab4b-4b66-9fc6-29c3b688b9b2",
+			"id": "0146b7ec-6217-4eff-b299-1ccb4b43def7",
 			"key": "MyOrgSite",
 			"value": "{{MyOrg}}/sitecollections/{{SiteCollectionId}}/",
 			"type": "string"
 		},
 		{
-			"id": "8713c364-558d-43da-abc3-e2a4158b2ed0",
+			"id": "65a5bc93-20b0-4b3f-88fc-aff62dd831ce",
 			"key": "MyOrgSiteNotebooks",
 			"value": "{{MyOrgSite}}/notes/notebooks",
 			"type": "string"
 		},
 		{
-			"id": "bae67ffc-b942-498c-a233-d558f1910724",
+			"id": "33b74404-0181-44a5-9ac5-4dbc6070ef19",
 			"key": "MyOrgGroup",
 			"value": "{{MyOrg}}/groups/{{GroupId}}",
 			"type": "string"
 		},
 		{
-			"id": "9fc80f3d-076f-442d-a5fe-c5d942ec2b39",
+			"id": "44936670-3cb8-4d0f-bb1d-29d2f85c4004",
 			"key": "MyOrgGroupNotebooks",
 			"value": "{{MyOrgGroup}}/notes/notebooks",
 			"type": "string"
 		},
 		{
-			"id": "70fc9a81-6dab-417d-8686-65f14a96c9c8",
+			"id": "09e9477b-cd60-49c3-ba59-49d41d10500b",
 			"key": "MeClassNotebooks",
 			"value": "{{Me}}/notes/classnotebooks",
 			"type": "string"
 		},
 		{
-			"id": "78f1ecf9-c337-4aa0-bac7-bf20bbae3243",
+			"id": "2a88967f-8893-423d-a622-ee29524590c6",
 			"key": "MeSections",
 			"value": "{{Me}}/notes/sections",
 			"type": "string"
 		},
 		{
-			"id": "911a6cc8-5337-4baa-b4c4-5988b8daa805",
+			"id": "738d3177-790a-4041-82b0-0e0063a905a9",
 			"key": "MeSectionGroups",
 			"value": "{{Me}}/notes/sectiongroups",
 			"type": "string"
 		},
 		{
-			"id": "1f58075d-2898-4c2f-bb6a-686bfa7c538b",
+			"id": "a9eb8646-0a07-4607-92d2-f6fece78c699",
 			"key": "MeResources",
 			"value": "{{Me}}/notes/resources",
 			"type": "string"
 		},
 		{
-			"id": "65603bc4-ca61-420b-92ce-5018aec7f020",
+			"id": "7d0427eb-27ac-47f6-9690-c790fb280e0f",
 			"key": "MePages",
 			"value": "{{Me}}/notes/pages",
 			"type": "string"
 		},
 		{
-			"id": "39f3fc95-3875-4110-b367-9a2791b2c555",
+			"id": "864b4550-6d2c-4c9c-903a-c576aa75f13f",
 			"key": "Target_Body",
 			"value": "body",
 			"type": "string"
 		},
 		{
-			"id": "ae07e478-fa7b-466d-94df-72cb00e9155c",
+			"id": "2ecc9873-e8ee-4a86-ac5f-02685a3fc716",
 			"key": "UserId",
 			"value": "<Update current value only, leave this initial value as is>",
 			"type": "string"
 		},
 		{
-			"id": "0ac7938f-3cbf-4be5-aa3d-0c67f196ef78",
+			"id": "8299c11e-71e8-49f5-86b2-bcb745bd5ab2",
 			"key": "PageId",
 			"value": "<Update current value only, leave this initial value as is>",
 			"type": "string"
 		},
 		{
-			"id": "576f5f2a-d7fe-4865-bd5e-831b8d76af78",
+			"id": "a121d4c4-12af-4c5c-b608-3252b345b90f",
 			"key": "SectionId",
 			"value": "<Update current value only, leave this initial value as is>",
 			"type": "string"
 		},
 		{
-			"id": "e847237d-1de4-411c-bc56-903656b27c91",
+			"id": "ae03f72a-75b7-48c6-b283-5d9419fb2e08",
 			"key": "SectionGroupId",
 			"value": "<Update current value only, leave this initial value as is>",
 			"type": "string"
 		},
 		{
-			"id": "18736d3d-6222-417f-a090-405b596f7389",
+			"id": "77f36322-d0b6-45b8-b91d-6cff8c304e61",
 			"key": "NotebookId",
 			"value": "<Update current value only, leave this initial value as is>",
 			"type": "string"
 		},
 		{
-			"id": "d8e73b01-bdbe-4bd5-ac2a-fff931bdaafe",
+			"id": "69a28016-8448-40f2-ba27-77d34962934c",
 			"key": "ResourceId",
 			"value": "<Update current value only, leave this initial value as is>",
 			"type": "string"
 		},
 		{
-			"id": "227dde8a-2e30-442d-9d56-2ef27d84c5e7",
+			"id": "81de0bcb-627d-4e6a-807c-35745e4640a0",
 			"key": "WebUrl-PPE",
 			"value": "<Update current value only, leave this initial value as is>",
 			"type": "string"
 		},
 		{
-			"id": "82a6f2b1-0491-44c0-9704-d46bf5bd8b14",
+			"id": "103df57b-e37e-49d3-886b-6a5897bc1343",
 			"key": "WebUrl-PROD",
 			"value": "<Update current value only, leave this initial value as is>",
 			"type": "string"
 		},
 		{
-			"id": "8c5ef9f5-a92e-4f48-b618-cf969ec4184a",
+			"id": "ca04916a-b16f-4e80-836d-a8e5a191d012",
 			"key": "WebUrl",
 			"value": "{{WebUrl-{{EnvVariableSufix}}}}",
 			"type": "string"
 		},
 		{
-			"id": "d859dfef-f590-4ed0-a42b-7df66a38a9cd",
+			"id": "641d104c-7bf5-43f6-aef0-2a382732bd24",
 			"key": "WebUrls",
 			"value": "<Update current value only, leave this initial value as is>",
 			"type": "string"
 		},
 		{
-			"id": "9ed5e229-fab1-45d7-8420-c976e5cabe8b",
+			"id": "1dab04ee-1d65-4ce9-b3dc-03be216b663b",
 			"key": "Target_Id",
 			"value": "<Update current value only, leave this initial value as is>",
 			"type": "string"
 		},
 		{
-			"id": "8ebe48cb-1364-4e8c-afea-2cbb2a5c43d5",
+			"id": "867470fa-7392-46be-a08c-821b5d043595",
 			"key": "HTMLContent",
 			"value": "<Update current value only, leave this initial value as is>",
 			"type": "string"
 		},
 		{
-			"id": "0b1a149a-980d-4795-8729-6294b129d3df",
+			"id": "3a414bd9-2859-460b-b794-e5652defe117",
 			"key": "Test_Title",
 			"value": "<Update current value only, leave this initial value as is>",
 			"type": "string"
 		},
 		{
-			"id": "fcd9268b-6137-4560-9092-11c613aa2f73",
+			"id": "f2b77d88-404b-442e-a442-dcbc1ffb414a",
 			"key": "Test_JapaneseTitle",
 			"value": "<Update current value only, leave this initial value as is>",
 			"type": "string"
 		},
 		{
-			"id": "a4660b5b-68b7-4e29-9976-3c77c1141b0a",
+			"id": "bd3c4ca4-e11f-4ecc-9ba9-3d580e1be138",
 			"key": "NotebookName",
 			"value": "<Update current value only, leave this initial value as is>",
 			"type": "string"
 		},
 		{
-			"id": "7178fbb5-325f-4f2e-ab7e-8260da569d92",
+			"id": "2a025266-c6c0-4d6f-a2f2-448ff280424d",
 			"key": "SiteCollectionId",
 			"value": "<Update current value only, leave this initial value as is>",
 			"type": "string"
 		},
 		{
-			"id": "2568a7a1-5d81-4417-9376-39bf2528a310",
+			"id": "44a4d4f7-5806-4256-8e68-82083bffe74f",
 			"key": "GroupId",
 			"value": "<Update current value only, leave this initial value as is>",
 			"type": "string"

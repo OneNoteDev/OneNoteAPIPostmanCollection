@@ -3,7 +3,7 @@
 	"values": [
 		{
 			"key": "Prod_AuthToken",
-			"value": "",
+			"value": "<Update current value only, leave this initial value as is>",
 			"description": {
 				"content": "",
 				"type": "text/plain"
@@ -12,7 +12,7 @@
 		},
 		{
 			"key": "Prod_AuthToken_Exp",
-			"value": "",
+			"value": "<Update current value only, leave this initial value as is>",
 			"description": {
 				"content": "",
 				"type": "text/plain"
@@ -21,7 +21,7 @@
 		},
 		{
 			"key": "Prod_UserName",
-			"value": "",
+			"value": "<Update current value only, leave this initial value as is>",
 			"description": {
 				"content": "",
 				"type": "text/plain"
@@ -30,7 +30,7 @@
 		},
 		{
 			"key": "Prod_Password",
-			"value": "",
+			"value": "<Update current value only, leave this initial value as is>",
 			"description": {
 				"content": "",
 				"type": "text/plain"
@@ -39,7 +39,7 @@
 		},
 		{
 			"key": "Prod_client_id",
-			"value": "",
+			"value": "<Update current value only, leave this initial value as is>",
 			"description": {
 				"content": "",
 				"type": "text/plain"
@@ -57,7 +57,7 @@
 		},
 		{
 			"key": "PPE_AuthToken",
-			"value": "",
+			"value": "<Update current value only, leave this initial value as is>",
 			"description": {
 				"content": "",
 				"type": "text/plain"
@@ -66,7 +66,7 @@
 		},
 		{
 			"key": "PPE_AuthToken_Exp",
-			"value": "",
+			"value": "<Update current value only, leave this initial value as is>",
 			"description": {
 				"content": "",
 				"type": "text/plain"
@@ -75,7 +75,7 @@
 		},
 		{
 			"key": "PPE_UserName",
-			"value": "",
+			"value": "<Update current value only, leave this initial value as is>",
 			"description": {
 				"content": "",
 				"type": "text/plain"
@@ -84,7 +84,7 @@
 		},
 		{
 			"key": "PPE_Password",
-			"value": "",
+			"value": "<Update current value only, leave this initial value as is>",
 			"description": {
 				"content": "",
 				"type": "text/plain"
@@ -93,7 +93,7 @@
 		},
 		{
 			"key": "PPE_client_id",
-			"value": "",
+			"value": "<Update current value only, leave this initial value as is>",
 			"description": {
 				"content": "",
 				"type": "text/plain"
@@ -114,10 +114,40 @@
 			"value": "https://login.microsoftonline.com/common/oauth2/token",
 			"description": "",
 			"enabled": true
+		},
+		{
+			"key": "PROD_China_AuthToken_Url",
+			"value": "https://login.partner.microsoftonline.cn/common/oauth2/token\n",
+			"description": "",
+			"enabled": true
+		},
+		{
+			"key": "Prod_China_AuthToken_Exp",
+			"value": "<Update current value only, leave this initial value as is>",
+			"description": "",
+			"enabled": true
+		},
+		{
+			"key": "Prod_China_AuthToken",
+			"value": "<Update current value only, leave this initial value as is>",
+			"description": "",
+			"enabled": true
+		},
+		{
+			"key": "Prod_China_Username",
+			"value": "<Update current value only, leave this initial value as is>",
+			"description": "",
+			"enabled": true
+		},
+		{
+			"key": "Prod_China_Password",
+			"value": "<Update current value only, leave this initial value as is>",
+			"description": "",
+			"enabled": true
 		}
 	],
 	"name": "My Workspace Globals",
 	"_postman_variable_scope": "globals",
-	"_postman_exported_at": "2019-01-23T23:01:39.810Z",
-	"_postman_exported_using": "Postman/6.7.1"
+	"_postman_exported_at": "2019-02-14T00:35:29.507Z",
+	"_postman_exported_using": "Postman/6.7.3"
 }
