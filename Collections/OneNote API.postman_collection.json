@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "944253e2-1208-42a2-8000-4e3ff32993fc",
+		"_postman_id": "2f6c2497-5940-47dd-a7d2-28b2696e56c7",
 		"name": "OneNote API",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -76,6 +76,111 @@
 									]
 								},
 								"description": "Gets the notebooks for a list of onenote weburls"
+							},
+							"response": []
+						},
+						{
+							"name": "GetOrCreateOrganizationSharingLink",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "{{AppIdHeader}}",
+										"value": "{{AppIdHeader_Value}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"accessLevel\":\"Edit\"}"
+								},
+								"url": {
+									"raw": "{{MeNotebooks}}/1-2fe7a33a-9406-437a-bcce-837f90e1478a/Microsoft.OneNote.Api.GetOrCreateOrganizationSharingLink",
+									"host": [
+										"{{MeNotebooks}}"
+									],
+									"path": [
+										"1-2fe7a33a-9406-437a-bcce-837f90e1478a",
+										"Microsoft.OneNote.Api.GetOrCreateOrganizationSharingLink"
+									]
+								},
+								"description": "Gets an organization sharing link if it exists. Otherwise an organization sharing link gets created."
+							},
+							"response": []
+						},
+						{
+							"name": "GetOrCreateOrganizationSharingLink MyOrg SiteId",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "{{AppIdHeader}}",
+										"type": "text",
+										"value": "{{AppIdHeader_Value}}"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"accessLevel\":\"View\"}"
+								},
+								"url": {
+									"raw": "{{MyOrgSiteNotebooks}}/1-0142b553-52b5-44cb-9bf4-abf4dc08bdd5/GetOrCreateOrganizationSharingLink",
+									"host": [
+										"{{MyOrgSiteNotebooks}}"
+									],
+									"path": [
+										"1-0142b553-52b5-44cb-9bf4-abf4dc08bdd5",
+										"GetOrCreateOrganizationSharingLink"
+									]
+								},
+								"description": "Gets an organization sharing link if it exists. Otherwise an organization sharing link gets created."
+							},
+							"response": []
+						},
+						{
+							"name": "GetOrCreateOrganizationSharingLink MyOrg Group",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "{{AppIdHeader}}",
+										"type": "text",
+										"value": "{{AppIdHeader_Value}}"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"accessLevel\":\"View\"}"
+								},
+								"url": {
+									"raw": "{{MyOrgGroupNotebooks}}/1-0142b553-52b5-44cb-9bf4-abf4dc08bdd5/GetOrCreateOrganizationSharingLink",
+									"host": [
+										"{{MyOrgGroupNotebooks}}"
+									],
+									"path": [
+										"1-0142b553-52b5-44cb-9bf4-abf4dc08bdd5",
+										"GetOrCreateOrganizationSharingLink"
+									]
+								},
+								"description": "Gets an organization sharing link if it exists. Otherwise an organization sharing link gets created."
 							},
 							"response": []
 						},
@@ -180,6 +285,152 @@
 								"description": "Gets the notebooks for a list of onenote weburls"
 							},
 							"response": []
+						},
+						{
+							"name": "RedeemSharingLink",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "{{AppIdHeader}}",
+										"type": "text",
+										"value": "{{AppIdHeader_Value}}"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"organizationSharingLink\": \"https://one-my.spoppe.com/:o:/g/personal/amoln_one_ccsctp_net/Ejqj5y8GlHpDvM6Df5DhR4oBGvAIBU9UGfAWHlfeO6lV7w\"}"
+								},
+								"url": {
+									"raw": "{{MeNotebooks}}/Microsoft.OneNote.Api.RedeemOrganizationSharingLink",
+									"host": [
+										"{{MeNotebooks}}"
+									],
+									"path": [
+										"Microsoft.OneNote.Api.RedeemOrganizationSharingLink"
+									]
+								},
+								"description": "Redeems sharing link"
+							},
+							"response": []
+						}
+					],
+					"description": "All available POST actions in Notebooks API",
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "DELETE",
+					"item": [
+						{
+							"name": "RevokeOrganizationSharingLink at Me",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "{{AppIdHeader}}",
+										"value": "{{AppIdHeader_Value}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"accessLevel\":\"View\"\n}"
+								},
+								"url": {
+									"raw": "{{MeNotebooks}}/1-0142b553-52b5-44cb-9bf4-abf4dc08bdd5/Microsoft.OneNote.Api.RevokeOrganizationSharingLink",
+									"host": [
+										"{{MeNotebooks}}"
+									],
+									"path": [
+										"1-0142b553-52b5-44cb-9bf4-abf4dc08bdd5",
+										"Microsoft.OneNote.Api.RevokeOrganizationSharingLink"
+									]
+								},
+								"description": "Gets the notebooks for a list of onenote weburls"
+							},
+							"response": []
+						},
+						{
+							"name": "RevokeOrganizationSharingLink at MyOrg SiteId",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "{{AppIdHeader}}",
+										"value": "{{AppIdHeader_Value}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"accessLevel\":\"View\"\n}"
+								},
+								"url": {
+									"raw": "{{MyOrgSiteNotebooks}}/1-0142b553-52b5-44cb-9bf4-abf4dc08bdd5/Microsoft.OneNote.Api.RevokeOrganizationSharingLink",
+									"host": [
+										"{{MyOrgSiteNotebooks}}"
+									],
+									"path": [
+										"1-0142b553-52b5-44cb-9bf4-abf4dc08bdd5",
+										"Microsoft.OneNote.Api.RevokeOrganizationSharingLink"
+									]
+								},
+								"description": "Gets the notebooks for a list of onenote weburls"
+							},
+							"response": []
+						},
+						{
+							"name": "RevokeOrganizationSharingLink at MyOrg Group",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "{{AppIdHeader}}",
+										"type": "text",
+										"value": "{{AppIdHeader_Value}}"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"accessLevel\":\"View\"\n}"
+								},
+								"url": {
+									"raw": "{{MyOrgGroupNotebooks}}/1-0142b553-52b5-44cb-9bf4-abf4dc08bdd5/Microsoft.OneNote.Api.RevokeOrganizationSharingLink",
+									"host": [
+										"{{MyOrgGroupNotebooks}}"
+									],
+									"path": [
+										"1-0142b553-52b5-44cb-9bf4-abf4dc08bdd5",
+										"Microsoft.OneNote.Api.RevokeOrganizationSharingLink"
+									]
+								},
+								"description": "Gets the notebooks for a list of onenote weburls"
+							},
+							"response": []
 						}
 					],
 					"description": "All available POST actions in Notebooks API",
@@ -199,10 +450,6 @@
 										"type": "text"
 									}
 								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
 								"url": {
 									"raw": "{{MeNotebooks}}/GetRecentNotebooks(includePersonalNotebooks=true)",
 									"host": [
@@ -227,10 +474,6 @@
 										"type": "text"
 									}
 								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
 								"url": {
 									"raw": "{{MeNotebooks}}",
 									"host": [
@@ -263,10 +506,6 @@
 										"type": "text"
 									}
 								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
 								"url": {
 									"raw": "{{MeResources}}/{{ResourceId}}/$value",
 									"host": [
@@ -303,10 +542,6 @@
 										"value": "{{AppIdHeader_Value}}"
 									}
 								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
 								"url": {
 									"raw": "{{MeSectionGroups}}",
 									"host": [
@@ -339,10 +574,6 @@
 										"type": "text"
 									}
 								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
 								"url": {
 									"raw": "{{MePages}}",
 									"host": [
@@ -363,10 +594,6 @@
 										"type": "text"
 									}
 								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
 								"url": {
 									"raw": "{{MePages}}/{{PageId}}/content?includeIds=true",
 									"host": [
@@ -498,10 +725,6 @@
 										"value": "{{AppIdHeader_Value}}"
 									}
 								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
 								"url": {
 									"raw": "{{MeSections}}",
 									"host": [
@@ -610,10 +833,6 @@
 										"value": "{{AppIdHeader_Value}}"
 									}
 								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
 								"url": {
 									"raw": "{{MeClassNotebooks}}?hasaccessto=true",
 									"host": [
@@ -741,205 +960,205 @@
 	],
 	"variable": [
 		{
-			"id": "a2c0d33a-2793-488a-999e-18f8f40e111f",
+			"id": "c108ae2e-0e74-4243-a857-6686afb34b0d",
 			"key": "AppIdHeader",
 			"value": "MS-Int-AppId",
 			"type": "string"
 		},
 		{
-			"id": "9170e4f4-c838-4db7-ba65-52aab8cd69f3",
+			"id": "624658cf-9069-4781-a41c-aa475277382d",
 			"key": "AppIdHeader_Value",
 			"value": "Testing",
 			"type": "string"
 		},
 		{
-			"id": "261e17ef-f123-4586-84b8-3be136954f2a",
+			"id": "a41002f7-caca-45ef-aecc-cc65807ccb38",
 			"key": "Me",
 			"value": "{{Site}}/api/{{version}}/me",
 			"type": "string"
 		},
 		{
-			"id": "76f8b2db-3cad-4c79-8010-3123325da426",
+			"id": "187a5427-8ad1-4818-87a8-dc57e69c1c64",
 			"key": "MeNotebooks",
 			"value": "{{Me}}/notes/notebooks",
 			"type": "string"
 		},
 		{
-			"id": "62689b42-d2cd-4df4-8b6c-6732294017e8",
+			"id": "3106327f-e2ad-4cbc-8f79-a38a13a0c63e",
 			"key": "User",
 			"value": "{{Site}}/api/{{version}}/users('{{UserId}}')",
 			"type": "string"
 		},
 		{
-			"id": "d666c776-ee5c-4858-8284-686f9789e7c3",
+			"id": "406152bd-59d4-49b6-8530-a1759cf8c49a",
 			"key": "UserNotebooks",
 			"value": "{{User}}/notes/notebooks",
 			"type": "string"
 		},
 		{
-			"id": "3677a20a-9763-458c-8608-2ee385cce698",
+			"id": "2c97721a-fc72-41f2-a429-7d8d66ab5a6f",
 			"key": "MyOrg",
 			"value": "{{Site}}/api/{{version}}/myorganization",
 			"type": "string"
 		},
 		{
-			"id": "429783c5-ab4b-4b66-9fc6-29c3b688b9b2",
+			"id": "749f9d5f-0815-48f7-813b-31852af9becb",
 			"key": "MyOrgSite",
 			"value": "{{MyOrg}}/sitecollections/{{SiteCollectionId}}/",
 			"type": "string"
 		},
 		{
-			"id": "8713c364-558d-43da-abc3-e2a4158b2ed0",
+			"id": "fb8b31ee-be53-453b-bd85-b044044667ad",
 			"key": "MyOrgSiteNotebooks",
 			"value": "{{MyOrgSite}}/notes/notebooks",
 			"type": "string"
 		},
 		{
-			"id": "bae67ffc-b942-498c-a233-d558f1910724",
+			"id": "41a5bcf3-721a-4eef-9673-f09e2452c509",
 			"key": "MyOrgGroup",
 			"value": "{{MyOrg}}/groups/{{GroupId}}",
 			"type": "string"
 		},
 		{
-			"id": "9fc80f3d-076f-442d-a5fe-c5d942ec2b39",
+			"id": "a6aba2ac-9a17-4ae3-9360-7fa0418cdfb8",
 			"key": "MyOrgGroupNotebooks",
 			"value": "{{MyOrgGroup}}/notes/notebooks",
 			"type": "string"
 		},
 		{
-			"id": "70fc9a81-6dab-417d-8686-65f14a96c9c8",
+			"id": "3cd9a074-0868-4d24-b3eb-bd2f88523606",
 			"key": "MeClassNotebooks",
 			"value": "{{Me}}/notes/classnotebooks",
 			"type": "string"
 		},
 		{
-			"id": "78f1ecf9-c337-4aa0-bac7-bf20bbae3243",
+			"id": "8078e105-b8a6-4e96-9388-01a194475250",
 			"key": "MeSections",
 			"value": "{{Me}}/notes/sections",
 			"type": "string"
 		},
 		{
-			"id": "911a6cc8-5337-4baa-b4c4-5988b8daa805",
+			"id": "15020dd9-ca4f-483b-a2e5-a9744e298a9f",
 			"key": "MeSectionGroups",
 			"value": "{{Me}}/notes/sectiongroups",
 			"type": "string"
 		},
 		{
-			"id": "1f58075d-2898-4c2f-bb6a-686bfa7c538b",
+			"id": "62df8fe7-7bba-4f2d-853e-ee4fa4d73ec2",
 			"key": "MeResources",
 			"value": "{{Me}}/notes/resources",
 			"type": "string"
 		},
 		{
-			"id": "65603bc4-ca61-420b-92ce-5018aec7f020",
+			"id": "38440fed-aefa-46a7-9b7d-5b6b6e812c4a",
 			"key": "MePages",
 			"value": "{{Me}}/notes/pages",
 			"type": "string"
 		},
 		{
-			"id": "39f3fc95-3875-4110-b367-9a2791b2c555",
+			"id": "727a05db-8c1a-4312-876a-e8459a051f81",
 			"key": "Target_Body",
 			"value": "body",
 			"type": "string"
 		},
 		{
-			"id": "ae07e478-fa7b-466d-94df-72cb00e9155c",
+			"id": "bb5be1a5-e4c7-4015-960a-8825a218fead",
 			"key": "UserId",
 			"value": "<Update current value only, leave this initial value as is>",
 			"type": "string"
 		},
 		{
-			"id": "0ac7938f-3cbf-4be5-aa3d-0c67f196ef78",
+			"id": "c66db52f-783a-424f-9ece-b410eb2644cb",
 			"key": "PageId",
 			"value": "<Update current value only, leave this initial value as is>",
 			"type": "string"
 		},
 		{
-			"id": "576f5f2a-d7fe-4865-bd5e-831b8d76af78",
+			"id": "79b36184-5774-4892-bf43-7456706be4a5",
 			"key": "SectionId",
 			"value": "<Update current value only, leave this initial value as is>",
 			"type": "string"
 		},
 		{
-			"id": "e847237d-1de4-411c-bc56-903656b27c91",
+			"id": "d0338d19-5657-4999-adf7-47851bb21376",
 			"key": "SectionGroupId",
 			"value": "<Update current value only, leave this initial value as is>",
 			"type": "string"
 		},
 		{
-			"id": "18736d3d-6222-417f-a090-405b596f7389",
+			"id": "7b83e4d8-a376-48c6-ab8f-fb16def683a4",
 			"key": "NotebookId",
 			"value": "<Update current value only, leave this initial value as is>",
 			"type": "string"
 		},
 		{
-			"id": "d8e73b01-bdbe-4bd5-ac2a-fff931bdaafe",
+			"id": "47d39d75-5d17-420d-b964-6cfa73c8c35e",
 			"key": "ResourceId",
 			"value": "<Update current value only, leave this initial value as is>",
 			"type": "string"
 		},
 		{
-			"id": "227dde8a-2e30-442d-9d56-2ef27d84c5e7",
+			"id": "d2902c84-aab6-4cb8-94f1-cacfce82ab09",
 			"key": "WebUrl-PPE",
 			"value": "<Update current value only, leave this initial value as is>",
 			"type": "string"
 		},
 		{
-			"id": "82a6f2b1-0491-44c0-9704-d46bf5bd8b14",
+			"id": "aa50a95f-cf6c-4220-bba6-1b96f6530148",
 			"key": "WebUrl-PROD",
 			"value": "<Update current value only, leave this initial value as is>",
 			"type": "string"
 		},
 		{
-			"id": "8c5ef9f5-a92e-4f48-b618-cf969ec4184a",
+			"id": "53e61cbf-2cd1-42b3-abd5-1666bcd0710c",
 			"key": "WebUrl",
 			"value": "{{WebUrl-{{EnvVariableSufix}}}}",
 			"type": "string"
 		},
 		{
-			"id": "d859dfef-f590-4ed0-a42b-7df66a38a9cd",
+			"id": "fe9e7771-3451-4eaa-adfc-eaaf58f1db48",
 			"key": "WebUrls",
 			"value": "<Update current value only, leave this initial value as is>",
 			"type": "string"
 		},
 		{
-			"id": "9ed5e229-fab1-45d7-8420-c976e5cabe8b",
+			"id": "b81bce67-2aff-4c41-911f-15db57d43aaa",
 			"key": "Target_Id",
 			"value": "<Update current value only, leave this initial value as is>",
 			"type": "string"
 		},
 		{
-			"id": "8ebe48cb-1364-4e8c-afea-2cbb2a5c43d5",
+			"id": "ff668ad4-a064-4a2e-b7a4-dc03739d722a",
 			"key": "HTMLContent",
 			"value": "<Update current value only, leave this initial value as is>",
 			"type": "string"
 		},
 		{
-			"id": "0b1a149a-980d-4795-8729-6294b129d3df",
+			"id": "f45119b5-f489-4495-bad2-2e8e2f8348b4",
 			"key": "Test_Title",
 			"value": "<Update current value only, leave this initial value as is>",
 			"type": "string"
 		},
 		{
-			"id": "fcd9268b-6137-4560-9092-11c613aa2f73",
+			"id": "db9ff930-fef2-4a36-8a60-c3218dcb4dd4",
 			"key": "Test_JapaneseTitle",
 			"value": "<Update current value only, leave this initial value as is>",
 			"type": "string"
 		},
 		{
-			"id": "a4660b5b-68b7-4e29-9976-3c77c1141b0a",
+			"id": "4caf0e5a-2985-40f0-a73c-48965bb2e525",
 			"key": "NotebookName",
 			"value": "<Update current value only, leave this initial value as is>",
 			"type": "string"
 		},
 		{
-			"id": "7178fbb5-325f-4f2e-ab7e-8260da569d92",
+			"id": "fede1a35-f344-4165-84d6-13127939d86d",
 			"key": "SiteCollectionId",
 			"value": "<Update current value only, leave this initial value as is>",
 			"type": "string"
 		},
 		{
-			"id": "2568a7a1-5d81-4417-9376-39bf2528a310",
+			"id": "36b67fa6-61fe-45b0-aa9d-8a24428f2478",
 			"key": "GroupId",
 			"value": "<Update current value only, leave this initial value as is>",
 			"type": "string"
