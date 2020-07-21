@@ -1,0 +1,144 @@
+{
+	"id": "00b54070-d643-4695-8c64-b679b065c905",
+	"values": [
+		{
+			"key": "Client_Id",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "Prod_UserName",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "Prod_Password",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "Prod_AuthToken",
+			"value": null,
+			"enabled": true
+		},
+		{
+			"key": "Prod_AuthToken_Exp",
+			"value": null,
+			"enabled": true
+		},
+		{
+			"key": "Prod_AuthToken_Url",
+			"value": "https://login.windows.net/common/oauth2/token",
+			"enabled": true
+		},
+		{
+			"key": "Edog_UserName",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "Edog_Password",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "Edog_AuthToken",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "Edog_AuthToken_Exp",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "Edog_AuthToken_Url",
+			"value": "https://login.windows-ppe.net/common/oauth2/token",
+			"enabled": true
+		},
+		{
+			"key": "Prod_China_Username",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "Prod_China_Password",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "Prod_China_AuthToken",
+			"value": null,
+			"enabled": true
+		},
+		{
+			"key": "Prod_China_AuthToken_Exp",
+			"value": null,
+			"enabled": true
+		},
+		{
+			"key": "Prod_China_AuthToken_Url",
+			"value": "https://login.partner.microsoftonline.cn/common/oauth2/token\n",
+			"enabled": true
+		},
+		{
+			"key": "Prod_GCCHigh_UserName",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "Prod_GCCHigh_Password",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "Prod_GCCHigh_AuthToken",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "Prod_GCCHigh_AuthToken_Exp",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "Prod_GCCHigh_AuthToken_Url",
+			"value": "https://login.microsoftonline.us/common/oauth2/token",
+			"enabled": true
+		},
+		{
+			"key": "Prod_GCC_UserName",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "Prod_GCC_Password",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "Prod_GCC_AuthToken",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "Prod_GCC_AuthToken_Exp",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "PPE_AuthToken_Exp",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "PPE_AuthToken",
+			"value": "",
+			"enabled": true
+		}
+	],
+	"name": "My Workspace Globals",
+	"_postman_variable_scope": "globals",
+	"_postman_exported_at": "2020-07-21T18:58:12.471Z",
+	"_postman_exported_using": "Postman/7.25.0"
+}

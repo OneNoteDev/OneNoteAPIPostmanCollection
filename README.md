@@ -1,47 +1,47 @@
 # Getting Started
 
-1.- First thing to do is to import all the environments into your Postman application. 
+1. First thing to do is to import all the environments into your Postman application. 
     The environments are a set of rules that tell postman what endpoint it should be contacting, for example production, Edog or Local deployment.
-    To do this, go to the "Manage Environments" menu in the top right settings icon, open it and click on the import button. 
+    To do this, go to the "Manage Environments" menu in the top right settings icon, open it and click on the import button.
 
-![Manage_Environments-Import](/img/Manage_Environments-Import.gif)
-
+    ![Manage_Environments-Import](/img/Manage_Environments-Import.gif)
 Select all the files under the Environments folder and load them into Postman. Verify that all the new environments have been loaded by 
 clicking in the drop down to the left of the "Manage Environments" menu.
 
-![Manage_Environments-Import](/img/Manage_Environments-DropDown.gif)
+    ![Manage_Environments-Import](/img/Manage_Environments-DropDown.gif)
 
-2.- Now that you have all the environments loaded into your workspace, is time to load a collection of requests. These are the actual HTTP requests that postman will use to contact the selected environment. To do this, go to "File > Import" and drag all the collections files under the Collections folder.
+2. Now that you have all the environments loaded into your workspace, is time to load a collection of requests. These are the actual HTTP requests that postman will use to contact the selected environment. To do this, go to "File > Import" and drag all the collections files under the Collections folder.
 
-![Manage_Environments-Import](/img/Collection-Import.gif)
+     ![Manage_Environments-Import](/img/Collection-Import.gif)
 
-This will load all the HTTP requests that have been preconfigured for use with the OneNote API.
+    This will load all the HTTP requests that have been preconfigured for use with the OneNote API.
 
-3.- The last thing to do is to specialize your collection to your local environment, this will tell postman what parameters to use for your machine and for your specific request scenarios.
+3. Now that you have the collection loaded let's go ahead and add the Users and accounts that you will be using to send the requests.
 
-a) Right click over the Collection that you want to configure and select Edit. This will open the collection configuration, in here navigate to the variables tab. Look for the "MachineName" parameter and add your machine's name TO THE "CURRENT VALUE" ONLY 
+    a) Go into the "Manage Environments" menu and click on the "Globals" button. Here you will see the settings postman will use to automatically generate AuthTokens.
 
-* DO NOT add any of these local parameters to the initial value, the initial value is exported and we don't want to share these parameters with others
+    **DO NOT** add any sensitive information to the **Initial value** column of the variables, the initial value is exported and we don't want to share those values with others
 
-![Manage_Environments-Import](/img/Collection-Variables.gif)
+    ![Manage_Environments-Import](/img/Manage_Environments-Globals.gif)
 
-b) Go back into the "Manage Environments" menu and click on the "Globals" button. Here you will see the settings postman will use to automatically generate AuthTokens. There are two different types of AuthTokens: Production or PPE environments.
-![Manage_Environments-Import](/img/Manage_Environments-Globals.gif)
+    b) Similarly you can edit any user specific ids (NotebookId, SectionId, tenantId etc...) by going to the collection variables tab and customizing the variables there. Right click over the Collection that you want to configure and select Edit. This will open the collection configuration, in here navigate to the variables tab and update any value you would want to use in your requests.
 
-You will need to fill the following variables in order for postman to be able to get a valid AuthToken:
+    ![Manage_Environments-Import](/img/Collection-Variables.gif)
 
-* Prod_UserName | PPE_UserName: The username for the account holding the notebooks you want to access using the onenote API (usually in the form of an email).
+    In the globals variables, you will need to fill the following values so that postman can get a valid AuthToken (Do this for each environment. e.g. GCC_UserName, GCCHigh_UserName, etc...):
 
-* Prod_Password | PPE_Password: The password to access the account specified in the username field.
+    * *Prod*_UserName: The username for the account holding the notebooks you want to access using the onenote API (usually in the form of an email).
 
-* Prod_client_id | PPE_client_id: The client id of the application that is requesting the account access.
+    * *Prod*_Password: The password to access the account specified in the username field.
 
-Once you have filled these three fields save your changes and go back to the main postman screen.
-Now you should be able to open any of the requests and hit the Send button to execute, postman will automatically fetch a new AuthToken whenever it is required.
+    * client_id: The client id of the application that is requesting the account access. (This is shared across environments).
 
-# Configuring SSL
+    Once you have filled these fields save your changes and go back to the main postman screen.
+    Now you should be able to open any of the requests and hit the Send button to execute it, postman will automatically fetch a new AuthToken whenever it is required.
 
-Your local devfabric deployment won't be reachable if we don't disable the use of "SSL certificate verification". To do this go to File > Settings > General and turn off the "SSL certificate verification".
+## Local Environment Only - Configuring SSL
+
+Your local deployment won't be reachable if you don't disable the use of "SSL certificate verification". To do this go to File > Settings > General and turn off the "SSL certificate verification".
 ![Manage_Environments-Import](/img/DisableSSL.gif)
 
 # Contributing

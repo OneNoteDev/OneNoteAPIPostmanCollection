@@ -1,0 +1,948 @@
+{
+	"info": {
+		"_postman_id": "71b9465d-ff70-46ea-ac55-f67ae159b6f3",
+		"name": "OneNote Agaves",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "OneNote Teams Integration",
+			"item": [
+				{
+					"name": "StaticFiles",
+					"item": [
+						{
+							"name": "Get-Vendor.min.js",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "",
+										"type": "text",
+										"value": "",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{Site}}/officeaddins/scripts/teamsonenote/vendor.min.js?tenantId={{PROD-tenantId}}",
+									"host": [
+										"{{Site}}"
+									],
+									"path": [
+										"officeaddins",
+										"scripts",
+										"teamsonenote",
+										"vendor.min.js"
+									],
+									"query": [
+										{
+											"key": "tenantId",
+											"value": "{{PROD-tenantId}}"
+										},
+										{
+											"key": "tenantId",
+											"value": "{{GCC-tenantId}}",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get-segoeui-bold-final.woff",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "",
+										"type": "text",
+										"value": "",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{Site}}/officeaddins/scripts/teamsonenote/segoeui-bold-final.woff?tenantId={{PROD-tenantId}}",
+									"host": [
+										"{{Site}}"
+									],
+									"path": [
+										"officeaddins",
+										"scripts",
+										"teamsonenote",
+										"segoeui-bold-final.woff"
+									],
+									"query": [
+										{
+											"key": "tenantId",
+											"value": "{{PROD-tenantId}}",
+											"description": "prod"
+										},
+										{
+											"key": "tenantId",
+											"value": "{{GCC-tenantId}}",
+											"description": "gcc",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get-MyNotebook.css",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "",
+										"type": "text",
+										"value": "",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{Site}}/officeaddins/scripts/teamsonenote/mynotebook.css?tenantId={{PROD-tenantId}}",
+									"host": [
+										"{{Site}}"
+									],
+									"path": [
+										"officeaddins",
+										"scripts",
+										"teamsonenote",
+										"mynotebook.css"
+									],
+									"query": [
+										{
+											"key": "tenantId",
+											"value": "{{PROD-tenantId}}"
+										},
+										{
+											"key": "tenantId",
+											"value": "{{GCC-tenantId}}",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "ControllerActions",
+					"item": [
+						{
+							"name": "Get-htmlcachingserviceworker.js",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "",
+										"type": "text",
+										"value": "",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{Site}}/officeaddins/teamsonenote/htmlcachingserviceworker.js?tenantId={{PROD-tenantId}}",
+									"host": [
+										"{{Site}}"
+									],
+									"path": [
+										"officeaddins",
+										"teamsonenote",
+										"htmlcachingserviceworker.js"
+									],
+									"query": [
+										{
+											"key": "tenantId",
+											"value": "{{PROD-tenantId}}"
+										},
+										{
+											"key": "tenantId",
+											"value": "{{GCC-tenantId}}",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get-TabConfigHtml",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "",
+										"type": "text",
+										"value": "",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{Site}}/officeaddins/teamsonenote/tabconfig?tenantId={{PROD-tenantId}}",
+									"host": [
+										"{{Site}}"
+									],
+									"path": [
+										"officeaddins",
+										"teamsonenote",
+										"tabconfig"
+									],
+									"query": [
+										{
+											"key": "tenantId",
+											"value": "{{PROD-tenantId}}",
+											"description": "prod"
+										},
+										{
+											"key": "tenantId",
+											"value": "{{GCC-tenantId}}",
+											"description": "gcc tenant",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get-TabRedirectHtml",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "",
+										"type": "text",
+										"value": "",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{Site}}/officeaddins/teamsonenote/tabredirect?tenantId={{PROD-tenantId}}&redirectUrl={{RedirectUrl}}",
+									"host": [
+										"{{Site}}"
+									],
+									"path": [
+										"officeaddins",
+										"teamsonenote",
+										"tabredirect"
+									],
+									"query": [
+										{
+											"key": "tenantId",
+											"value": "{{PROD-tenantId}}",
+											"description": "prod"
+										},
+										{
+											"key": "tenantId",
+											"value": "{{GCC-tenantId}}",
+											"description": "gcc tenant",
+											"disabled": true
+										},
+										{
+											"key": "redirectUrl",
+											"value": "{{RedirectUrl}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get-TabRemoveHtml",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "",
+										"type": "text",
+										"value": "",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{Site}}/officeaddins/teamsonenote/tabremove?tenantId={{PROD-tenantId}}",
+									"host": [
+										"{{Site}}"
+									],
+									"path": [
+										"officeaddins",
+										"teamsonenote",
+										"tabremove"
+									],
+									"query": [
+										{
+											"key": "tenantId",
+											"value": "{{PROD-tenantId}}",
+											"description": "prod"
+										},
+										{
+											"key": "tenantId",
+											"value": "{{GCC-tenantId}}",
+											"description": "gcc tenant",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get-TabContentHtml",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "",
+										"type": "text",
+										"value": "",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{Site}}/officeaddins/teamsonenote/tabContent?tenantId={{PROD-tenantId}}",
+									"host": [
+										"{{Site}}"
+									],
+									"path": [
+										"officeaddins",
+										"teamsonenote",
+										"tabContent"
+									],
+									"query": [
+										{
+											"key": "tenantId",
+											"value": "{{PROD-tenantId}}"
+										},
+										{
+											"key": "tenantId",
+											"value": "{{GCC-tenantId}}",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get-Recent",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "",
+										"type": "text",
+										"value": "",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{Site}}/officeaddins/teamsonenote/Recent?tenantId={{PROD-tenantId}}",
+									"host": [
+										"{{Site}}"
+									],
+									"path": [
+										"officeaddins",
+										"teamsonenote",
+										"Recent"
+									],
+									"query": [
+										{
+											"key": "tenantId",
+											"value": "{{PROD-tenantId}}"
+										},
+										{
+											"key": "tenantId",
+											"value": "{{GCC-tenantId}}",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get-TeamNotebooks",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "",
+										"type": "text",
+										"value": "",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{Site}}/officeaddins/teamsonenote/TeamNotebooks?tenantId={{PROD-tenantId}}",
+									"host": [
+										"{{Site}}"
+									],
+									"path": [
+										"officeaddins",
+										"teamsonenote",
+										"TeamNotebooks"
+									],
+									"query": [
+										{
+											"key": "tenantId",
+											"value": "{{PROD-tenantId}}"
+										},
+										{
+											"key": "tenantId",
+											"value": "{{GCC-tenantId}}",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get-MyNotebook",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "",
+										"type": "text",
+										"value": "",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{Site}}/officeaddins/teamsonenote/MyNotebook?tenantId={{PROD-tenantId}}",
+									"host": [
+										"{{Site}}"
+									],
+									"path": [
+										"officeaddins",
+										"teamsonenote",
+										"MyNotebook"
+									],
+									"query": [
+										{
+											"key": "tenantId",
+											"value": "{{PROD-tenantId}}"
+										},
+										{
+											"key": "tenantId",
+											"value": "{{GCC-tenantId}}",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "SendToOneNote",
+			"item": [
+				{
+					"name": "StaticFiles",
+					"item": [
+						{
+							"name": "Get-SendToOneNote.js",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "",
+										"type": "text",
+										"value": "",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{Site}}/officeaddins/scripts/SendToOneNote/SendToOneNote.js?tenantId={{PROD-tenantId}}",
+									"host": [
+										"{{Site}}"
+									],
+									"path": [
+										"officeaddins",
+										"scripts",
+										"SendToOneNote",
+										"SendToOneNote.js"
+									],
+									"query": [
+										{
+											"key": "tenantId",
+											"value": "{{PROD-tenantId}}"
+										},
+										{
+											"key": "tenantId",
+											"value": "{{GCC-tenantId}}",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "ControllerActions",
+					"item": [
+						{
+							"name": "Get-SendToOneNote",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "",
+										"type": "text",
+										"value": "",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{Site}}/officeaddins/SendToOneNote?tenantId={{PROD-tenantId}}",
+									"host": [
+										"{{Site}}"
+									],
+									"path": [
+										"officeaddins",
+										"SendToOneNote"
+									],
+									"query": [
+										{
+											"key": "tenantId",
+											"value": "{{PROD-tenantId}}",
+											"description": "prod"
+										},
+										{
+											"key": "tenantId",
+											"value": "{{GCC-tenantId}}",
+											"description": "gcc tenant",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{{{AuthToken}}}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "4fcc87ca-73a0-4014-93cd-88c9089ecd59",
+				"type": "text/javascript",
+				"exec": [
+					"const AuthTokenName = \"AuthToken\";",
+					"const AuthTokenExpName = \"AuthTokenExp\";",
+					"const AuthTokenUrlName = \"AuthTokenUrl\";",
+					"const ClientIdName = \"ClientId\";",
+					"const passwordName = \"password\";",
+					"const usernameName = \"username\";",
+					"const resource = \"https://officeapps.live.com\";",
+					"const scope = \"openid\";",
+					"",
+					"// Object used to request an authtoken",
+					"// Based on currently selected postman environment",
+					"const echoPostRequest = {",
+					"  url:getGlobalVarThroughEnvironmentVar(AuthTokenUrlName),",
+					"  method: 'POST',",
+					"    body: {",
+					"            mode: 'urlencoded',",
+					"            urlencoded: [",
+					"                    { key: \"grant_type\", value: \"password\" },",
+					"                    { key: \"username\", value:  getGlobalVarThroughEnvironmentVar(usernameName)},",
+					"                    { key: \"password\", value: getGlobalVarThroughEnvironmentVar(passwordName) },",
+					"                    { key: \"resource\", value: resource },",
+					"                    { key: \"scope\", value: scope },",
+					"                    { key: \"client_id\", value: getGlobalVarThroughEnvironmentVar(ClientIdName)}",
+					"            ]",
+					"        }",
+					"}",
+					"",
+					"// Verify if the AuthToken needs to be refreshed",
+					"if (!getGlobalVarThroughEnvironmentVar(AuthTokenName) || ",
+					"    !getGlobalVarThroughEnvironmentVar(AuthTokenExpName)) {",
+					"    console.log('AuthToken or expiry date are missing')",
+					"    requestAuthToken();",
+					"}",
+					"else if (getGlobalVarThroughEnvironmentVar(AuthTokenExpName) <= (new Date()).getTime()) {",
+					"    console.log('AuthToken is expired')",
+					"    requestAuthToken();",
+					"}",
+					"else {",
+					"    console.log(\"Current AuthToken is still valid. Current Time: \" + (new Date()) + \" Expiry Time: \" + (new Date(getGlobalVarThroughEnvironmentVar(AuthTokenExpName))));",
+					"}",
+					"",
+					"// Makes a request to bet a new AuthToken.",
+					"// This will store the new auth token as a global variable.",
+					"function requestAuthToken (){",
+					"    pm.sendRequest(echoPostRequest, function (err, res) {",
+					"    console.log(err ? err : res.json());",
+					"        if (err === null) {",
+					"            console.log('Saving the token and expiry date')",
+					"            var responseJson = res.json();",
+					"            // Turn seconds into milliseconds.",
+					"            var expiresInMs = responseJson.expires_in * 1000;",
+					"            setGlobalVarThroughEnvironmentVar(AuthTokenName, responseJson.access_token)",
+					"    ",
+					"            // Define expiryDate by adding the milliseconds of expiration to current datetime.",
+					"            var currentDate = new Date();",
+					"            var expiryDate = new Date(currentDate.getTime() + expiresInMs);",
+					"            console.log(\"Expires at: \" + expiryDate);",
+					"            setGlobalVarThroughEnvironmentVar(AuthTokenExpName, expiryDate.getTime());",
+					"        }",
+					"    });",
+					"}",
+					"",
+					"// Using an env variable to grab the global variable allows us to avoid checking for what env we are running on here. Instead we rely on postman's current env selection to search for the right global variable. See how globals are setup (they are basically a collection of both prod and ppe environment variables that are selected based on the env we are running)",
+					"function getGlobalVarThroughEnvironmentVar(varName){",
+					"    return pm.globals.get(pm.environment.get(varName));",
+					"}",
+					"",
+					"function setGlobalVarThroughEnvironmentVar(varName, value){",
+					"    return pm.globals.set(pm.environment.get(varName),value);",
+					"}"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "e1141f29-244d-41b0-b308-74478dc4f2c0",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "5b36162a-6e15-4e6b-8e39-fd9a4a53df25",
+			"key": "AppIdHeader",
+			"value": "MS-Int-AppId",
+			"type": "string"
+		},
+		{
+			"id": "d97c88ce-f26b-48b5-a27f-a9683578f1b6",
+			"key": "AppIdHeader_Value",
+			"value": "NotesTeamsIntegration",
+			"type": "string"
+		},
+		{
+			"id": "85c3c09f-4a11-484e-ad45-73ace6f04cca",
+			"key": "Me",
+			"value": "{{Site}}/api/{{version}}/me",
+			"type": "string"
+		},
+		{
+			"id": "477a2856-ba72-4ffb-9dba-740d4db2424f",
+			"key": "MeNotebooks",
+			"value": "{{Me}}/notes/notebooks",
+			"type": "string"
+		},
+		{
+			"id": "ec62938c-42cf-477d-804f-ba211772b715",
+			"key": "User",
+			"value": "{{Site}}/api/{{version}}/users('{{UserId}}')",
+			"type": "string"
+		},
+		{
+			"id": "340b229c-b5a2-46e1-86a5-dea77ff8daa2",
+			"key": "UserNotebooks",
+			"value": "{{User}}/notes/notebooks",
+			"type": "string"
+		},
+		{
+			"id": "5f8ebf2b-fc93-47b7-8e21-57927893020c",
+			"key": "MyOrg",
+			"value": "{{Site}}/api/{{version}}/myorganization",
+			"type": "string"
+		},
+		{
+			"id": "ed614da5-8417-415b-97f2-1aec7adfd915",
+			"key": "MyOrgSite",
+			"value": "{{MyOrg}}/sitecollections/{{SiteCollectionId}}/",
+			"type": "string"
+		},
+		{
+			"id": "ee9066e2-eb50-4e0d-9311-3fc654470a6d",
+			"key": "MyOrgSiteNotebooks",
+			"value": "{{MyOrgSite}}/notes/notebooks",
+			"type": "string"
+		},
+		{
+			"id": "3c5c9f52-4c17-4c16-8398-9d36a6feba42",
+			"key": "MyOrgGroup",
+			"value": "{{MyOrg}}/groups/{{GroupId}}",
+			"type": "string"
+		},
+		{
+			"id": "c6b423cb-f140-4ab4-88f5-a4169cd28a03",
+			"key": "MyOrgGroupNotebooks",
+			"value": "{{MyOrgGroup}}/notes/notebooks",
+			"type": "string"
+		},
+		{
+			"id": "f147d246-9f03-444a-b20c-9addaaf6d35c",
+			"key": "MeClassNotebooks",
+			"value": "{{Me}}/notes/classnotebooks",
+			"type": "string"
+		},
+		{
+			"id": "63862b88-0686-4248-9c87-623306488692",
+			"key": "MeSections",
+			"value": "{{Me}}/notes/sections",
+			"type": "string"
+		},
+		{
+			"id": "0ea9f6e3-32dc-48f7-bb0b-da8ebc1a73ff",
+			"key": "MeSectionGroups",
+			"value": "{{Me}}/notes/sectiongroups",
+			"type": "string"
+		},
+		{
+			"id": "bbcc6a45-3ef6-4098-8ca8-0cfd4edff82a",
+			"key": "MeResources",
+			"value": "{{Me}}/notes/resources",
+			"type": "string"
+		},
+		{
+			"id": "009abd12-eb78-473a-8c72-aa89d3990fbf",
+			"key": "MePages",
+			"value": "{{Me}}/notes/pages",
+			"type": "string"
+		},
+		{
+			"id": "42926f19-118b-4e43-8f29-8dcc4d68caeb",
+			"key": "MePagesAtSectionID",
+			"value": "{{MeSections}}/{{SectionId}}/pages",
+			"type": "string"
+		},
+		{
+			"id": "6405d22d-a975-48fb-9a93-e1895b732ba5",
+			"key": "Target_Body",
+			"value": "body",
+			"type": "string"
+		},
+		{
+			"id": "7a531de8-9788-491b-95cb-09b20e4b6c77",
+			"key": "UserId",
+			"value": "<Update current value only, leave this initial value as is>",
+			"type": "string"
+		},
+		{
+			"id": "7158082f-54af-4bb1-b0ac-1b7dc23547d4",
+			"key": "PageId",
+			"value": "<Update current value only, leave this initial value as is>",
+			"type": "string"
+		},
+		{
+			"id": "891a3285-8b08-4faf-906d-918def303dea",
+			"key": "SectionId",
+			"value": "<Update current value only, leave this initial value as is>",
+			"type": "string"
+		},
+		{
+			"id": "d755f171-6f32-4b24-939d-e703956aab90",
+			"key": "SectionGroupId",
+			"value": "<Update current value only, leave this initial value as is>",
+			"type": "string"
+		},
+		{
+			"id": "3c862979-7892-43d7-97d4-927b21b07029",
+			"key": "NotebookId",
+			"value": "<Update current value only, leave this initial value as is>",
+			"type": "string"
+		},
+		{
+			"id": "b5bc9779-1477-4785-97c8-b888e61ee71c",
+			"key": "ClassNotebookId",
+			"value": "<Update current value only, leave this initial value as is>",
+			"type": "string"
+		},
+		{
+			"id": "4952d907-7f6d-41a4-916e-eed1c255fda5",
+			"key": "ResourceId",
+			"value": "<Update current value only, leave this initial value as is>",
+			"type": "string"
+		},
+		{
+			"id": "9dbbf7b3-8235-49ff-856b-9ec974a159c2",
+			"key": "WebUrl-PPE",
+			"value": "<Update current value only, leave this initial value as is>",
+			"type": "string"
+		},
+		{
+			"id": "4ada18f7-ae47-4dac-b9dd-d848e1db0813",
+			"key": "WebUrl-PROD",
+			"value": "<Update current value only, leave this initial value as is>",
+			"type": "string"
+		},
+		{
+			"id": "94007ed8-18f2-4b59-b192-98808b0fd3c4",
+			"key": "WebUrl-GCC",
+			"value": "<Update current value only, leave this initial value as is>",
+			"type": "string"
+		},
+		{
+			"id": "93076372-c482-48e7-83e7-3d939b0d4ed8",
+			"key": "WebUrl",
+			"value": "{{WebUrl-{{EnvVariableSufix}}}}",
+			"type": "string"
+		},
+		{
+			"id": "0a192864-7f88-4cf7-8a45-99cb3ed3f4b4",
+			"key": "WebUrls",
+			"value": "<Update current value only, leave this initial value as is>",
+			"type": "string"
+		},
+		{
+			"id": "ede58244-d90d-43e8-90f5-569e3547d858",
+			"key": "Target_Id",
+			"value": "<Update current value only, leave this initial value as is>",
+			"type": "string"
+		},
+		{
+			"id": "11a7ee2f-5100-4d39-8080-65fc5f7dcf83",
+			"key": "HTMLContent",
+			"value": "<Update current value only, leave this initial value as is>",
+			"type": "string"
+		},
+		{
+			"id": "0111baf3-5636-4eaa-8b94-2b09d76dff25",
+			"key": "Test_Title",
+			"value": "TestingTitle",
+			"type": "string"
+		},
+		{
+			"id": "50802484-202b-43dd-9dde-8fb6325ad9cb",
+			"key": "Test_JapaneseTitle",
+			"value": "<Update current value only, leave this initial value as is>",
+			"type": "string"
+		},
+		{
+			"id": "b8d76e23-53c0-46a4-b2a9-f356a84b6f01",
+			"key": "NotebookName",
+			"value": "<Update current value only, leave this initial value as is>",
+			"type": "string"
+		},
+		{
+			"id": "c44d0ae2-d4e0-4960-ae15-e46c4851a909",
+			"key": "GroupId",
+			"value": "<Update current value only, leave this initial value as is>",
+			"type": "string"
+		},
+		{
+			"id": "540f3745-c75e-4266-ad7f-a036f78356e9",
+			"key": "EnableTenantRedirectCookieName",
+			"value": "EnableTenantRedirect",
+			"type": "string"
+		},
+		{
+			"id": "400bea3e-d845-41d4-ae7b-f2a54c72588f",
+			"key": "SiteCollectionId-PPE",
+			"value": "<Update current value only, leave this initial value as is>",
+			"type": "string"
+		},
+		{
+			"id": "4e3bba8d-9412-4b2f-a651-a18ff0a6f076",
+			"key": "SiteCollectionId-PROD",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"id": "a9cb8033-b04d-4499-b692-ee6f83693b8e",
+			"key": "SiteCollectionId",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"id": "d85ff97e-26df-4c4b-964e-3aebeb3670f1",
+			"key": "PROD-tenantId",
+			"value": "<Update current value only, leave this initial value as is>",
+			"type": "string"
+		},
+		{
+			"id": "fbe025e5-a53b-4fab-a218-cf5d9b0f1f8f",
+			"key": "GCC-tenantId",
+			"value": "<Update current value only, leave this initial value as is>",
+			"type": "string"
+		},
+		{
+			"id": "ffaf6527-85f6-4301-a480-b90971c6bc66",
+			"key": "RedirectUrl",
+			"value": "<Update current value only, leave this initial value as is>",
+			"type": "string"
+		}
+	],
+	"protocolProfileBehavior": {}
+}
