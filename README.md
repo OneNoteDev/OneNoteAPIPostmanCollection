@@ -34,7 +34,7 @@ clicking in the drop down to the left of the "Manage Environments" menu.
 
     * *Prod*_Password: The password to access the account specified in the username field.
 
-    * client_id: The client id of the application that is requesting the account access. (This is shared across environments).
+    * client_id: The client id of the application that is requesting the account access. (This is shared across environments). Look at [this documentation](https://docs.microsoft.com/en-us/previous-versions/office/office-365-api/how-to/onenote-auth#register-your-application-and-get-a-client-id-and-secret-consumer-apps) to learn how to create a clientId.
 
     Once you have filled these fields save your changes and go back to the main postman screen.
     Now you should be able to open any of the requests and hit the Send button to execute it, postman will automatically fetch a new AuthToken whenever it is required.
